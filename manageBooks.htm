@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="html">
+<head>
+      
+  <nav class="nav-head">
+    <a class="nav-text" href="adminMainPage.htm"> Admin Main Page </a>
+  </nav>
+    <link rel="stylesheet" href="style.css">
+    <h1 id="page-head"> Manage Books </h1>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td> <b> Title </b> </td>
+      <td> <input id="Title" placeholder="Enter Title"> </td>
+      <td> <b> Publisher </b> </td>
+      <td> <input id="Publisher" placeholder="Enter Publisher"> </td>
+
+    </tr>
+    <tr>
+      <td> <b> ISBN # </b> </td>
+      <td> <input id="ISBN" placeholder="Enter ISBN #"> </td>
+      <td> <b> Genre </b> </td>
+      <td> <input id="Genre" placeholder="Enter Genre"> </td>
+    </tr>
+    <tr>
+      <td> <b> Author </b> </td>
+      <td> <input id="Author" placeholder="Enter Author"> </td>
+      <td> <b> Stock </b> </td>
+      <td> <input id="Stock" placeholder="Enter Stock"> </td>
+    </tr>
+    <tr>
+      <td> <b> Vendor </b> </td>
+      <td> <input id="Vendor" placeholder="Enter Vendor"> </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td> <button onclick="addBook()"> Add Book </button> </td>
+      <td> <button onclick="deleteBook()"> Delete Book </button> </td>
+      <td> <button onclick="selectBook()"> Select Book </button> </td>
+      <td> <button onclick="updateBook()"> Update Book </button> </td>
+      <td> <button onclick="addRndBooks()"> Add Random Book </button> </td>
+    </tr>
+  </table>
+  <p id="changeMe">
+  </p>
+  
+  <table class="book-table" id="book-table" border="black solid 2px">
+    <tr> 
+      <td class="table-text"> <b> Title </b> </td>
+      <td class="table-text"> <b> ISBN # </b> </td>
+      <td class="table-text"> <b> Author </b> </td>
+      <td class="table-text"> <b> Vendor </b> </td>
+    </tr>
+  </table>
+  
+</body>
+
+<script src="manageBooks.js" defer></script>
+
+</html>
