@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+<style>
+    .button-box{
+            height: 100px;
+        }
+        .leftcolumn {   
+            position: relative;
+            padding-left: 30%;
+            padding-right: 50%;
+        }
+        .card {
+            width: 520px;
+            position: relative;
+            background-color: white;
+            margin-top: 20px;
+        }
+        .text-box{
+            width: 100%;
+        }
+        .fakeimg {
+            position: relative;
+            width: 100%;
+            flex-wrap: wrap;
+            text-align: center;
+            
+        }
+        .book-shadow{
+            box-shadow: 0 0 4px #8d8d8d;
+        }
+        .real-image{
+            display: inline-block;
+            box-shadow: 0 0 4px #8d8d8d;
+        }
+        a:link, a:visited {
+            background-color: #25c46d;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        a:hover, a:active {
+            background-color: rgb(17, 0, 255);
+        }
+        .button-box > a{
+        margin-top: 10px;
+    }
+    body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-color: #eeeeee;}
+    h1 {display:inline; color: #353837;}
+    h2 {display:inline;}
+    h4 {display:inline;}
+    table {padding-top: 10px;border-collapse: collapse; margin-left: 150px}
+    td {background: white;}
+    table, td {border: 20px solid lightgrey}
+    .searchbar {width: 50%; border: none;  padding-top: 5px; padding-bottom: 5px;}
+    .searchbtn {padding-top: 5px; padding-bottom: 5px; border: none; background: #353837; color: white}
+    .header {padding: 10px;}
+    .taskbar {background: white; padding: 15px; width:100%}
+    .price {text-align: right;}
+</style>
+</head>
+<body>
+    <div class = header>
+        <h1>Name of Site &nbsp;</h1>
+        <input type = "text" class = "searchbar">
+        <button type = "submit" class = "searchbtn">Search</button>
+        <h4>&emsp;Account</h4>
+        <h4>&emsp;Cart</h4>
+    </div>
+    <div class = taskbar>
+        <h2>&emsp;Home</h2> 
+        <h2>&emsp;Genres</h2>
+    </div>
+    <div class="row">
+            <div class="leftcolumn">
+            <div class="card">
+                <h2>The Art of War</h2>
+                <h3><i>Sun Tzu</i></h3>
+                <div class="fakeimg" style="height:400px;">
+                    <img src="https://books.google.com/books/content/images/frontcover/WeHsAQAAQBAJ?fife=w200-h300">
+                    <div class="button-box"><a href="#" >$9.99</a></div>
+                </div>
+                <div class="text-box">
+                    <p>Some text..</p>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ </body>
+</html> 
