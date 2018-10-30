@@ -101,6 +101,10 @@
 	background: #000;	
 	margin:0px;
 }
+.searchbtn:hover{
+	color:#fff;
+	background:#999;
+}
 .fa-search{
 	color:white;
 }
