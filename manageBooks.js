@@ -2,7 +2,7 @@ var i = 0;
 var j = "";
 
 
-function addBook(Title=undefined, ISBN=undefined, Author=undefined, Vendor=undefined)
+function addBook(Title, ISBN, Author, Vendor, Publisher, Genre, Stock)
 {
   if ((Title == undefined) || (ISBN == undefined) || (Author == undefined) || (Vendor == undefined))
   {
@@ -10,6 +10,9 @@ function addBook(Title=undefined, ISBN=undefined, Author=undefined, Vendor=undef
     var isbn = document.getElementById("ISBN").value;
     var author = document.getElementById("Author").value;
     var vendor = document.getElementById("Vendor").value;
+    var publisher = document.getElementById("Publisher").value;
+    var genre = document.getElementById("Genre").value;
+    var stock = document.getElementById("Stock").value;
   }
   else
   {
@@ -17,10 +20,13 @@ function addBook(Title=undefined, ISBN=undefined, Author=undefined, Vendor=undef
     var isbn = ISBN;
     var author = Author;
     var vendor = Vendor;
+    var publisher = Publisher;
+    var genre = Genre;
+    var stock = Stock;
   }
   var table = document.getElementById("book-table");
-  var L = ["Title, ISBN, Author, Vendor"];
-  var A = [title, isbn, author, vendor];
+  var L = ["Title, ISBN, Author, Vendor, Publisher, Genre, Stock"];
+  var A = [title, isbn, author, vendor, publisher, genre, stock];
   var tr = document.createElement("tr");
   var td;
   var td_text;
@@ -65,6 +71,9 @@ function getBookData(Node)
   var isbn = tr.children[1].innerHTML;
   var author = tr.children[2].innerHTML;
   var vendor = tr.children[3].innerHTML;
+  var publisher = tr.children[4].innerHTML;
+  var genre = tr.children[5].innerHTML;
+  var stock = tr.children[6].innerHTML;
   
   document.getElementById("changeMe").innerHTML = tr.innerHTML;
   
@@ -72,6 +81,9 @@ function getBookData(Node)
   document.getElementById("ISBN").innerHTML = isbn;
   document.getElementById("Author").innerHTML = author;
   document.getElementById("Vendor").innerHTML = vendor;
+  document.getElementById("Vendor").innerHTML = publisher;
+  document.getElementById("Vendor").innerHTML = genre;
+  document.getElementById("Vendor").innerHTML = stock;
 }
 
 function changeTitle()
@@ -98,6 +110,24 @@ function changeVendor()
   document.getElementById("Vendor").innerHTML = j;
 }
 
+function changeVendor()
+{
+  j = document.getElementById("Publisher").value;
+  document.getElementById("Publisher").innerHTML = j;
+}
+
+function changeVendor()
+{
+  j = document.getElementById("Genre").value;
+  document.getElementById("Genre").innerHTML = j;
+}
+
+function changeVendor()
+{
+  j = document.getElementById("Stock").value;
+  document.getElementById("Stock").innerHTML = j;
+}
+
 
 function getRndInteger(min, max)
 {
@@ -108,7 +138,7 @@ function addRndBooks(x=1)
 {
   for (i=0; i<x; i++)
   {
-    addBook(RndName(), RndName(), RndName(), RndName());
+    addBook(RndName(), getRndInteger(0, 50000), RndName(), RndName(), RndName(), RndName(), getRndInteger(0, 50));
   }
 }
 
@@ -138,7 +168,7 @@ function RndName()
 
 //addBook("A", "A", "A", "A");
 //addBook("B", "B", "B", "B");
-addBook(RndName(), RndName(), RndName(), RndName());
-addBook(RndName(), RndName(), RndName(), RndName());
-addBook(RndName(), RndName(), RndName(), RndName());
-addBook(RndName(), RndName(), RndName(), RndName());
+addBook(RndName(), getRndInteger(0, 50000), RndName(), RndName(), RndName(), RndName(), getRndInteger(0, 50));
+addBook(RndName(), getRndInteger(0, 50000), RndName(), RndName(), RndName(), RndName(), getRndInteger(0, 50));
+addBook(RndName(), getRndInteger(0, 50000), RndName(), RndName(), RndName(), RndName(), getRndInteger(0, 50));
+addBook(RndName(), getRndInteger(0, 50000), RndName(), RndName(), RndName(), RndName(), getRndInteger(0, 50));

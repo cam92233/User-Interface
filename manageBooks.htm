@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html class="html">
-<head>
-      
-  <nav class="nav-head">
-    <a class="nav-text" href="adminMainPage.htm"> Admin Main Page </a>
-  </nav>
-    <link rel="stylesheet" href="style.css">
-    <h1 id="page-head"> Manage Books </h1>
-</head>
+<html class = html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<!--<link rel="stylesheet" href="style.css">-->
+<style>
+  html {background: lightgrey;}
+  a {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #000; text-decoration: none;}
+  body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #000;}
+  table {padding-top: 10px; border-collapse: collapse;}
+  td {background: white;}
+  table, td, tr {padding: 5px; border: 5px solid lightgrey;}
+  h1, h2 {display:inline;}
+  
+  .input-table {}
+  .button-table {}
+  
+  .nav-head {background: white; width:100%; padding: 10px;}
+  .nav-text {color: #353837; padding-bottom: 10px;}
+  .header {padding: 10px;}
+</style>
 
-<body>
-  <table>
+<div class = header>
+  <title> Books Database </title>
+  <h1> Book Database </h1>
+</div>
+
+<div class="nav-head">
+  <h2><a class="nav-text" href="adminMainPage.htm"> &emsp;Home </a></h2>
+</div>
+
+<div class = body>
+  <table class="input-table" id="input-table">
     <tr>
       <td> <b> Title </b> </td>
       <td> <input id="Title" placeholder="Enter Title"> </td>
       <td> <b> Publisher </b> </td>
       <td> <input id="Publisher" placeholder="Enter Publisher"> </td>
-
     </tr>
     <tr>
       <td> <b> ISBN # </b> </td>
@@ -35,7 +53,7 @@
       <td> <input id="Vendor" placeholder="Enter Vendor"> </td>
     </tr>
   </table>
-  <table>
+  <table class="button-table" id="button-table">
     <tr>
       <td> <button onclick="addBook()"> Add Book </button> </td>
       <td> <button onclick="deleteBook()"> Delete Book </button> </td>
@@ -44,19 +62,21 @@
       <td> <button onclick="addRndBooks()"> Add Random Book </button> </td>
     </tr>
   </table>
-  <p id="changeMe">
-  </p>
+  <p id="changeMe"> Book </p>
   
-  <table class="book-table" id="book-table" border="black solid 2px">
+  <table class="book-table" id="book-table">
     <tr> 
-      <td class="table-text"> <b> Title </b> </td>
-      <td class="table-text"> <b> ISBN # </b> </td>
-      <td class="table-text"> <b> Author </b> </td>
-      <td class="table-text"> <b> Vendor </b> </td>
+      <td class="book-table-text"> <b> Title </b> </td>
+      <td class="book-table-text"> <b> ISBN # </b> </td>
+      <td class="book-table-text"> <b> Author </b> </td>
+      <td class="book-table-text"> <b> Vendor </b> </td>
+      <td class="book-table-text"> <b> Publisher </b> </td>
+      <td class="book-table-text"> <b> Genre </b> </td>
+      <td class="book-table-text"> <b> Stock </b> </td>
     </tr>
   </table>
   
-</body>
+</div>
 
 <script src="manageBooks.js" defer></script>
 

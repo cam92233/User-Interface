@@ -1,38 +1,49 @@
 <!DOCTYPE html>
-<html class="html">
-<head>
-  
-  <link rel="stylesheet" href="style.css">
-  
-  <nav class="nav-head">
-    <a class="nav-text" href="adminMainPage.htm"> Admin Main Page </a>
-  </nav>
-  
-  <h1 id="page-head"> Admin Main Page </h1>
-  
-</head>
+<html class = html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--<link rel="stylesheet" href="style.css">-->
+<style>
+  html {background: lightgrey;}
+  a {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #000; text-decoration: none;}
+  body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #000;}
+  table {padding-top: 10px; border-collapse: collapse;}
+  td {background: white;}
+  table, td, tr {padding: 5px; border: 5px solid lightgrey;}
+  h1, h2 {display:inline;}
+  .nav-head {background: white; width:100%; padding: 10px;}
+  .nav-text {color: #353837; padding-bottom: 10px;}
+  .header {padding: 10px;}
+  .body {padding: 10px;}
+</style>
 
-<body>
-  
+<div class = header>
+  <title> Admin Main Page </title>
+  <h1> Admin Main Page </h1>
+</div>
+
+<div class="nav-head">
+  <h2><a class="nav-text" href="adminMainPage.htm"> &emsp; Logout </a></h2>
+</div>
+
+<div class = body>
   <table class="link-table" border="black solid 2px">
     <tr>
-      <td class="table-text"><a href="manageBooks.htm"> Manage books </a></td>
+      <td class="table-link-text"><a href="manageBooks.htm"> Manage books </a></td>
     </tr>
     <tr>
-      <td class="table-text"><a href="adminMainPage.htm"> Manage users </a></td>
+      <td class="table-link-text"><a href="adminMainPage.htm"> Manage users </a></td>
     </tr>
     <tr>
-      <td class="table-text"><a href="adminMainPage.htm"> Manage orders </a></td>
+      <td class="table-link-text"><a href="adminMainPage.htm"> Manage orders </a></td>
     </tr>
     <tr>
-      <td class="table-text"><a href="adminMainPage.htm"> Manage promotions </a></td>
+      <td class="table-link-text"><a href="adminMainPage.htm"> Manage promotions </a></td>
     </tr>
     <tr>
-      <td class="table-text"><a href="adminMainPage.htm"> Manage reports </a></td>
+      <td class="table-link-text"><a href="ownerMainPage.htm"> Manage reports </a></td>
     </tr>
   </table>
-  
-</body>
+</div>
 
 <script src="./main.js" defer></script>
 
