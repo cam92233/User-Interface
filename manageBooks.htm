@@ -8,11 +8,26 @@
   body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #000;}
   table {padding-top: 10px; border-collapse: collapse;}
   td {background: white;}
-  table, td, tr {padding: 5px; border: 5px solid lightgrey;}
+  /*table, td, tr {padding: 5px; border: 5px solid lightgrey;}*/
   h1, h2 {display:inline;}
+  input {height: 25px; border: black solid 1px; width: 100%}
+  button {background:white; border: black solid 1px}
   
-  .input-table {}
+  .input-table tr {border: solid lightgrey 5px}
+  .input-table-form {padding-right: solid lightgrey 10px; border: 5px solid lightgrey}
+  .input-table table {border: solid black 2px}
+  
   .button-table {}
+  .button-table td {border: solid lightgrey 5px; background: lightgrey;}
+  
+  .book-information-box {border: solid lightgrey 5px; padding: 10px; background: white; height: 19px}
+  
+  .body {border: solid lightgrey 5px;}
+  
+  .div-book-table {padding: 5px;}
+  .book-table table {border: solid lightgrey 5px; background:white; padding: 20px}
+  .book-table th {border: solid black 1px; background:white; width: 150px}
+  .book-table td {border: solid black 1px; height: 19px}
   
   .nav-head {background: white; width:100%; padding: 10px;}
   .nav-text {color: #353837; padding-bottom: 10px;}
@@ -30,27 +45,13 @@
 
 <div class = body>
   <table class="input-table" id="input-table">
-    <tr>
-      <td> <b> Title </b> </td>
-      <td> <input id="Title" placeholder="Enter Title"> </td>
-      <td> <b> Publisher </b> </td>
-      <td> <input id="Publisher" placeholder="Enter Publisher"> </td>
-    </tr>
-    <tr>
-      <td> <b> ISBN # </b> </td>
-      <td> <input id="ISBN" placeholder="Enter ISBN #"> </td>
-      <td> <b> Genre </b> </td>
-      <td> <input id="Genre" placeholder="Enter Genre"> </td>
-    </tr>
-    <tr>
-      <td> <b> Author </b> </td>
-      <td> <input id="Author" placeholder="Enter Author"> </td>
-      <td> <b> Stock </b> </td>
-      <td> <input id="Stock" placeholder="Enter Stock"> </td>
-    </tr>
-    <tr>
-      <td> <b> Vendor </b> </td>
-      <td> <input id="Vendor" placeholder="Enter Vendor"> </td>
+    <tr><td class="input-table-form"><b>Title:</b><input id="Title" placeholder="Enter Title"></td>
+    <td class="input-table-form"><b>Publisher:</b><input id="Publisher" placeholder="Enter Publisher"></td>
+    </tr><tr><td class="input-table-form"><b>ISBN #:</b><input id="ISBN" placeholder="Enter ISBN #"></td>
+    <td class="input-table-form"><b>Genre:</b><input id="Genre" placeholder="Enter Genre"></td>
+    </tr><tr><td class="input-table-form"><b>Author:</b><input id="Author" placeholder="Enter Author"></td>
+    <td class="input-table-form"><b>Stock:</b><input id="Stock" placeholder="Enter Stock"></td>
+    </tr><tr><td class="input-table-form"><b>Vendor:</b><input id="Vendor" placeholder="Enter Vendor"></td>
     </tr>
   </table>
   <table class="button-table" id="button-table">
@@ -62,20 +63,20 @@
       <td> <button onclick="addRndBooks()"> Add Random Book </button> </td>
     </tr>
   </table>
-  <p id="changeMe"> Book </p>
   
-  <table class="book-table" id="book-table">
-    <tr> 
-      <td class="book-table-text"> <b> Title </b> </td>
-      <td class="book-table-text"> <b> ISBN # </b> </td>
-      <td class="book-table-text"> <b> Author </b> </td>
-      <td class="book-table-text"> <b> Vendor </b> </td>
-      <td class="book-table-text"> <b> Publisher </b> </td>
-      <td class="book-table-text"> <b> Genre </b> </td>
-      <td class="book-table-text"> <b> Stock </b> </td>
-    </tr>
-  </table>
+  <div class="book-information-box" id="changeMe"> Book </div>
   
+  <div class = "div-book-table">
+    <table class="book-table" id="book-table">
+      <th>Title</th>
+      <th>ISBN #</th>
+      <th>Author</th>
+      <th>Vendor</th>
+      <th>Publisher</th>
+      <th>Genre</th>
+      <th>Stock</th>
+    </table>
+  </div>
 </div>
 
 <script src="manageBooks.js" defer></script>
