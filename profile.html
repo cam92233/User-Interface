@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>    
+<style>
+    
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+        background: lightgrey
+    }
+    
+    img {
+        border-radius: 50%; 
+        width:200px;
+    }
+    
+    h1 {
+        font-weight: 500;
+    }
+    h2 {
+        display: inline;
+        font-weight: 300;
+    }
+    
+    button {
+        padding-top: 5px; 
+        padding-bottom: 5px; 
+        border: none; 
+        background: #353837; 
+        color: white
+    }
+    
+    .info {
+        padding-bottom: 10px
+    }
+    
+    .box {
+        margin-top: 100px;
+        background:white; 
+        width: 500px; 
+        height: 500px; 
+        padding: 70px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .editbtn {
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .changebtn {
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .deletebtn {
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .book {
+        display:inline-block;
+        vertical-align:middle;
+        font-size:2em;
+        font-weight:bold;
+    }
+    
+    .worm {
+        display:inline-block;
+        vertical-align:middle;
+        font-family:georgia;
+        font-style:italic;
+        font-size:2em;
+        padding:3px;
+        background:#fff;
+        top:0px;
+    }
+    
+    .header{
+        position:fixed;
+        top:0px;
+        left:0px;
+        padding:10px;
+        width:100%;
+        height:6%;
+        z-index:1;
+        background:#dfdfdf;
+        overflow:none;
+        font-size:0.9em;
+        font-family:helvetica;
+        border-bottom:15px white solid;
+    }
+    
+</style>
+</head>
+<body>
+
+<div class = header>
+<span class="book">BOOK</span><span class="worm">Worm</span>
+</div>
+
+
+<div class = box>
+<h1 align = "center">Your Profile</h1>
+
+<div align = "center" class = profileImg>
+    <img src = "http://showbizy-dev.cygnismedia.com/images/default-user.png" alt = "Avatar">
+</div>
+<br>
+    
+<div align = "center" class = info> 
+    <h2>johndoe123</h2>
+    <br>
+    <h2>John</h2>
+    <h2>Doe</h2>
+    <br>
+    <h2>johndoe@uga.edu</h2>
+</div>
+<br>
+    
+<div align = "center" class = help>
+    <button type = "submit" class = "editbtn">Edit Profile</button>
+    <button type = "submit" class = "changebtn">Change Password</button>
+    <button type = "submit" class = "deletebtn">Delete Account</button>
+</div>
+</div> 
+    
+</body>
+</html>
