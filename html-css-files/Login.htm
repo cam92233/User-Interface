@@ -19,7 +19,7 @@ body {
 }
 
 /*Style for mandatory fields*/
-input[type=password], input[type=username] {
+input[type=name], input[type=password], input[type=address], input[type=email], input[type=birthdate], input[type=username] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -33,7 +33,7 @@ input[type=text]:focus, input[type=password]:focus {
     outline: none;
 }
 
-/*Login form style */
+/*Registration form style */
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
@@ -51,10 +51,20 @@ hr {
     opacity: 0.9;
 }
 
-.loginbtn:hover {
+.loginrbtn:hover {
     opacity: 1;
 }
 
+/* Add a blue text color to links */
+register {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
 </style>
 </head>
 <body>
@@ -74,11 +84,10 @@ hr {
     
     <button type="submit" class="loginbtn">Login</button>
   </div>
+    <div class="container signin">
+    <p>Not yet registered? <register href="#">Register</a>.</p>
+  </div>
 </form>
 
 </body>
 </html>
-
-
-
-
