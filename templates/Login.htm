@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* */
+.container {
+    padding: 20px;
+    background-color: white;
+}
+
+/*Style for mandatory fields*/
+input[type=password], input[type=username] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/*Login form style */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Submit button */
+.loginbtn {
+    background-color: #000000;
+    color: white;
+    padding: 20px 22px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.loginbtn:hover {
+    opacity: 1;
+}
+
+</style>
+</head>
+<body>
+
+<form action="/action_page.php">
+  <div class="container">
+    <h1>Login</h1>
+    <hr>
+
+    <label for="username"><b>Username</b></label>
+    <input type="username" placeholder="Enter Username" name="username" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    
+    <hr>
+    
+    <button type="submit" class="loginbtn">Login</button>
+  </div>
+</form>
+
+</body>
+</html>
+
+
+
+
