@@ -23,7 +23,7 @@ def query_presidents():
 def application(env, start_response):
     start_response('200 OK', [('Content-Type', 'text/html')])
     pprint(env)
-    html_template = Template(filename = 'templates/home.html')
+    html_template = Template(filename = 'templates/index.html')
     html_dict = {
    #     'presidents': query_presidents()
     } # html_dict

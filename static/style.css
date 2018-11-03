@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Admin Main Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style type="text/css">
-    body{
+body{
 			font-family:helvetica;
 			font-size:0.9em;
 			padding:0px;
 			margin:0px;
 			height:100%;
-			background:white;
-			padding:0 20% 2% 20%;
 		}
 		h1{
 			text-transform:uppercase;
@@ -152,72 +143,9 @@
 			background:#fff;
 			padding:0 20% 2% 20%;
 		}
-    .link-table{
-      border: solid white;
-    }
-    .table-link-text{
-      border: solid white;
-    }
-    </style>
-</head>
-
-<body>
-  <div id="nav">
-    <div align="center"><span class="book">BOOK</span>
-      <span class="worm">Worm</span>
-      <div class="menu">
-        <ul>
-          <div class="top">
-            <li>
-              <a href="">account<i class="fa fa-sort-down"></i></a>
-            </li> 
-            <div class="drop">
-              <li><a href="./adminMainPage.htm">main page</a></li>
-              <li><a href="">settings</a></li>
-              <li><a href="">sign out</a></li>
-            </div>
-          </div>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="filler"></div>
-	<div id="container" align="center">
-	  <h1>Admin Main Page</h1>
-  </div>
-  <table class="link-table" border="black solid 2px">
-    <tr>
-      <td class="table-link-text"><button onclick="visitBooks()">Manage books</button></td>
-    </tr>
-    <tr>
-      <td class="table-link-text"><button onclick="">Manage users</button></td>
-    </tr>
-    <tr>
-      <td class="table-link-text"><button onclick="">Manage orders</button></td>
-    </tr>
-    <tr>
-      <td class="table-link-text"><button onclick="">Manage promotions</button></td>
-    </tr>
-    <tr>
-      <td class="table-link-text"><button onclick="visitOwner()">Manage reports</button></td>
-    </tr>
-  </table>
-</body>
-<foot>
-  <script src="./main.js" defer></script>
-  <script>
-    function visitAdmin(){
-      window.location='./adminMainPage.htm';
-    }
-    function visitBooks(){
-      window.location='./manageBooks.htm';
-    }
-    function visitOwner(){
-      window.location='./ownerMainPage.htm';
-    }
-    function visitEoDSR(){
-      window.location='./endOfDaySalesReport.htm';
-    }
-  </script>
-</foot>
-</html>
+		.links{
+			overflow:auto;
+			height:100%;
+			background:#fff;
+			padding:0 20% 2% 20%;
+		}
