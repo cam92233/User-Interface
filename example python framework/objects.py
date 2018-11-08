@@ -1,6 +1,3 @@
-import user_persist as up
-from address import address
-
 class Address:
     def __init__(ad1,ad2,st,zip):
         self.ad1 = ad1
@@ -20,7 +17,7 @@ class Account:
         #then create address, parsed from data but i aint doin tht here rn
         self.addr = Address(addr)
 
-        #getters,setters..
+        #getters,setters probly..
 
 
 #other domain classes not included for simplicity
