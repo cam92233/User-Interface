@@ -9,7 +9,7 @@ def register(data):
     #and get cust_id from newly inserted tuple
     #actually why do we have id when usernames must be unique
     id = db.select('select id from accounts where username = ' + data[username]) #pseudocode as hell 
-    query = 'insert into address(add_line_1,add_line_2,state,zip,cust_id) values (' + data.addr + ')'
+    query = 'insert into address(add_line_1,add_line_2,state,zip,cust_id) values (' + data.addr + ',' + id + ')'
     db.insert(query)
 
 def login(data):
