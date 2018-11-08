@@ -26,7 +26,11 @@ def application(env, start_response):
     mysql_connection = mysql.connector.connect(**mysql_connection_info)
     start_response('200 OK', [('Content-Type', 'text/html')])
     pprint(env)
+<<<<<<< HEAD
     html_template = Template(filename = 'templates/home.html')
+=======
+    html_template = Template(filename = 'static/index.html')
+>>>>>>> 134c8975fbdb9433b808aa758a3fe857a8313dd3
     html_dict = {
        'presidents': query_presidents(mysql_connection)
     } # html_dict

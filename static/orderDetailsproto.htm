@@ -252,7 +252,28 @@ button:hover{
 	margin-bottom:2%;
 	padding:10px;
 }
+
+#check{
+	display:none;
+}
 </style>
+
+<script>
+function showPayment(){
+	x = document.getElementById("sel").value;
+	
+	if(x == "Card"){
+		document.getElementById("check").style.display="none";
+		document.getElementById("card").style.display="block";
+	}
+	if(x == "E-Check"){
+		document.getElementById("check").style.display="block";
+		document.getElementById("card").style.display="none";
+	}
+	
+	
+}
+</script>
 </head>
 <body>
 <div id="nav">
@@ -294,8 +315,10 @@ button:hover{
 </fieldset>
 </form>
 
-
-<form>
+<b>Method of payment:</b> <select id="sel" onchange="showPayment()">
+<option>Card</option>
+<option>E-Check</option></select>
+<div id="card"><form>
 <fieldset>
 <legend>Billing and Card</legend>
 <b>Address Line 1:</b> <input type="text" value="690 Blah Avenue"/><br/>
@@ -304,6 +327,16 @@ button:hover{
 <b>Card No.:</b> <input type="text" value="5555555555555555"></input> <b>CVV:</b> <input type="text" value="555"/>
 </fieldset>
 </form>
+</div>
+<div id="check">
+<form>
+<fieldset>
+<legend>E-Check</legend>
+<b>Bank name:</b> <input type="text" value="Bankity Bank"/> <b>Account Type:</b> <select><option>Checking</option><option>Savings</option></select><br/>
+<b>Routing number:</b> <input type="text" size="10" value="1234567890"/> <b>Account Number:</b> <input type="text" size="10" value="1234567890"></input><br/> <b>Name on Account:</b> <input type="text" size="10" value="Foo Bar"/>
+</fieldset>
+</form>
+</div>
 <hr/>
 <span style="float:left;"><button>cancel</button> <button>place order</button></span>
 <table>
