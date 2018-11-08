@@ -22,4 +22,4 @@ def update(data):
     #change account info
 
 def retrieve(username):
-    #retrieve tuple (and tuple from address) via username and make account object
+    #retrieve tuple (and tuple from address) via username and make account object 
