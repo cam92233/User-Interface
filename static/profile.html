@@ -107,21 +107,67 @@
 </div>
 <br>
     
-<div align = "center" class = info> 
-    <h2>johndoe123</h2>
+    
+<div id="div1" align = "center" class = info> 
+    <h2 id="f1">johndoe123</h2>
     <br>
-    <h2>John</h2>
-    <h2>Doe</h2>
+    <h2 id="f2">John</h2>
+    <h2 id="f3">Doe</h2>
     <br>
-    <h2>johndoe@uga.edu</h2>
+    <h2 id="f4">johndoe@uga.edu</h2>
 </div>
+    
+    <div id="div2" align = "center" class = info style="display: none;"> 
+    <p><label>Old password:</label>
+           <input type="text" id="myText">
+        <br>
+        <label>New password:</label>
+           <input type="text" id="myText2">
+        </p>
+     
+    </div>
+    
 <br>
     
 <div align = "center" class = help>
-    <button type = "submit" class = "editbtn">Edit Profile</button>
-    <button type = "submit" class = "changebtn">Change Password</button>
+    <button type = "submit" class = "editbtn" id="btn1" onclick="editText()">Edit Profile</button>
+    <button type = "submit" class = "changebtn" id="btn2" onclick="changePwd()">Change Password</button>
     <button type = "submit" class = "deletebtn">Delete Account</button>
 </div>
+    
+    
+    <script>
+    function editText() {
+        document.getElementById("f1").contentEditable = true
+         document.getElementById("f2").contentEditable = true
+         document.getElementById("f3").contentEditable = true
+         document.getElementById("f4").contentEditable = true
+        if(document.getElementById("btn1").innerHTML=="Edit Profile")
+            document.getElementById("btn1").innerHTML = "Save Changes"
+        else {
+            document.getElementById("btn1").innerHTML = "Edit Profile"
+            document.getElementById("f1").contentEditable = false
+            document.getElementById("f2").contentEditable = false
+            document.getElementById("f3").contentEditable = false
+            document.getElementById("f4").contentEditable = false
+        }
+    }
+        
+    function changePwd() {
+         var x = document.getElementById("div1");
+        var y = document.getElementById("div2");
+        if (y.style.display === "none" && document.getElementById("btn2").innerHTML == "Change Password") {
+             document.getElementById("btn2").innerHTML = "Save Changes"
+            x.style.display = "none";
+            y.style.display = "block";
+        } else {
+            document.getElementById("btn2").innerHTML = "Change Password"
+            x.style.display = "block";
+            y.style.display = "none"
+        }
+    }
+</script>
+    
 </div> 
     
 </body>
