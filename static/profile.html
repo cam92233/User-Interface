@@ -119,12 +119,15 @@
     
     <div id="div2" align = "center" class = info style="display: none;"> 
     <p><label>Old password:</label>
-           <input type="text" id="myText">
+           <input type="password" id="myPwd">
         <br>
         <label>New password:</label>
-           <input type="text" id="myText2">
+           <input type="password" id="myPwd2">
         </p>
-     
+     <input type="checkbox" onclick="showPwd()">Show Passwords
+
+
+
     </div>
     
 <br>
@@ -166,6 +169,18 @@
             y.style.display = "none"
         }
     }
+        
+    function showPwd() {
+        var x = document.getElementById("myPwd");
+        var y = document.getElementById("myPwd2");
+        if (x.type === "password") {
+            x.type = "text";
+            y.type = "text";
+        } else {
+            x.type = "password";
+            y.type = "password";
+        }
+}
 </script>
     
 </div> 
