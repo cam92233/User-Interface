@@ -16,7 +16,7 @@ mysql_connection_info = {
 
 def getBookInfo(title,mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("SELECT * FROM books WHERE title='{}'".format(title))
+    mysql_cursor.execute("SELECT * FROM books WHERE isbn='{}'".format(title))
     bookInfo = mysql_cursor.fetchall()
     pprint(bookInfo)
     return bookInfo

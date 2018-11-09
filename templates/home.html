@@ -77,8 +77,8 @@
   <tr>
   % for president in presidents:
     <td>
-    <a href=http://172.19.50.140/web/?book=${president['title']}>
-      <img src = https://marketplace.canva.com/MAB___U-clw/1/0/thumbnail_large/canva-yellow-lemon-children-book-cover-MAB___U-clw.jpg width ="200" height="300"></a><br>${president['title']}<br>${president['author']}<br>
+    <a href=http://172.19.50.140/web/?book=${president.get("isbn")}>
+      <img src =${president['pic_url']} width ="200" height="300"></a><br>${president['title']}<br>${president['author']}<br>
       <p class = price>$${president['price']}</p>
     </td>
     % endfor

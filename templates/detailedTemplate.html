@@ -220,13 +220,13 @@
                 <h2 style="float: right!important;margin-top: 0px;">$${bookInfo[0].get("price") }</h2>
                 <h3><i>${bookInfo[0].get("author")}</i></h3>
                 <div class="fakeimg" style="height:400px;">
-                    <img src="https://books.google.com/books/content/images/frontcover/WeHsAQAAQBAJ?fife=w200-h300">
+                    <img src="${bookInfo[0].get("pic_url")}">
                     <div class="button-box"><a href="#" >ADD TO CART</a></div>
                     <div class="button-box"><a href="#" >RESERVE</a></div>
                 </div>
                 <div class="text-box">
-                    <p>Some text..</p>
-                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    <p>ISBN: ${bookInfo[0].get("isbn")}</p>
+                    <p>${bookInfo[0].get("detail")}</p>
                 </div>
             </div>
         </div>
