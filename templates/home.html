@@ -32,6 +32,19 @@
       .price {
         text-align: right;
       }
+  
+
+.img-container {
+    float: left;
+    width: 19%;
+    padding: 5px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
     </style>
     <link rel="stylesheet" href="css/check.css" type="text/css"/>
     <link rel="stylesheet" href="/web/static/style.css">
@@ -43,17 +56,18 @@
          <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
         <span class="worm">Worm</span>
         <div class="search">
-            <form class="rad">
-                <input type="radio" name="cat" checked="checked"></input> ISBN 
-                <input type="radio" name="cat"></input> Title 
-                <input type="radio" name="cat"></input> Author
-                <input type="radio" name="cat"></input> Subject
-            </form>
-            <input type="text" class="searchbar"  placeholder="Search...">
+            <form class="rad" action="" method="GET">
+                <input type="radio" name="radiobutton" value="isbn" checked="checked"></input> ISBN 
+                <input type="radio" name="radiobutton" value="title"></input> Title 
+                <input type="radio" name="radiobutton" value="author"></input> Author
+                <input type="radio" name="radiobutton" value="subject"></input> Subject
+            
+            <input type="text" required class="searchbar"  name="search" placeholder="Search...">
             </input>
-            <button type="submit" class="searchbtn">
+            <button type="submit" class="searchbtn" value="Submit">
                 <i class="fa fa-search"></i>
             </button> 
+            </form>
         </div>
         <div class="menu">
             <a href="./static/cartproto.htm">cart <i class="fa fa-shopping-cart"></i></a>
@@ -71,71 +85,16 @@
     </div>
 
 <div class="filler"></div>
-
-<table>
-    
-  <tr>
+  <div class="clearfix">
   % for president in presidents:
-    <td>
-    <a href=http://172.19.50.140/web/?book=${president.get("isbn")}>
-      <img src =${president['pic_url']} width ="200" height="300"></a><br>${president['title']}<br>${president['author']}<br>
-      <p class = price>$${president['price']}</p>
-    </td>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=${president.get("isbn")}>
+      <img src =${president['pic_url']} width ="200" height="300" style="width:100%;max-width:200px"></a><br>${president['title']}<br>${president['author']}<br>
+      <p class = price style="float:left;">$${president['price']}</p>
+    </div>
     % endfor
-  </tr>  
-    <tr>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/41yMNepSxpL._SX329_BO1,204,203,200_.jpg width ="200"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/81-DFVziuwL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://m.media-amazon.com/images/S/aplus-media/vc/f043712f-4655-4c8a-b60f-fca1e4c6ca9f.JPG  width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/81yAo5ElQlL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-       
-    </tr>
-
-     <tr>
-        <td><img src = https://vignette.wikia.nocookie.net/theoutsiders/images/a/a5/The_Outsiders_book.jpg/revision/latest?cb=20100117013809 width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src =https://images-na.ssl-images-amazon.com/images/I/51dEuPZMS-L._SX322_BO1,204,203,200_.jpg  width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51eiB%2B0FskL._SX330_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src =https://images-na.ssl-images-amazon.com/images/I/41JbPzUy7UL._SX329_BO1,204,203,200_.jpg  width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://i.harperapps.com/covers/9780062795250/y648.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-       
-    </tr>
-    
-     <tr>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/41pwDQ15SrL._SX353_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src =https://prodimage.images-bn.com/pimages/9781534438378_p0_v3_s550x406.jpg  width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/61UAcfOo4LL._SX331_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51LUrpB%2BAcL._SX315_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51KH7n7tOlL._SX331_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-       
-    </tr>
-    
-     <tr>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/41LPBRNaVCL._SX355_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/91IJ2rIOEDL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://static1.squarespace.com/static/5504b49be4b0953c7cb8e0d4/t/55260a51e4b080e2d1bc0776/1428026872053/ width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images.gr-assets.com/books/1513108059l/18114322.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51yzVoK9UiL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-       
-    </tr>
-    
-     <tr>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51E6We5dNCL._SX329_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/81unGNGRPLL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://prodimage.images-bn.com/pimages/9781250076960_p0_v4_s550x406.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/9160KvYYLIL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51Ugr-SIxiL._SX331_BO1,204,203,200_.jpg  width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-       
-    </tr>
-    
-     <tr>
-        <td><img src = https://images.gr-assets.com/books/1507963312l/33574273.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51z1rO69-KL._SX330_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51yNCWChOxL._SX332_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/51-2c1I1a8L._SX329_BO1,204,203,200_.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-        <td><img src = https://images-na.ssl-images-amazon.com/images/I/91jFmxYLSsL.jpg width ="200" height="300"><br>Title<br>Author<br> <p class = price>$0.00</p></td>
-       
-    </tr>
-</table>
+</div>
+  
 
 </body>
 </html>

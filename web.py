@@ -21,6 +21,12 @@ def getBookInfo(title,mysql_connection):
     pprint(bookInfo)
     return bookInfo
 
+def searchHandler(mysql_connection,field,search):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("SELECT * FROM books WHERE {}='{}'".format(field,search))
+    presidents = mysql_cursor.fetchall()
+    return presidents
+
 def query_presidents(mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("SELECT * FROM books")
@@ -33,12 +39,27 @@ def application(env, start_response):
     start_response('200 OK', [('Content-Type', 'text/html')])
     qs = parse_qs(env['QUERY_STRING'])
     if len(qs) > 0:
-      detailedBook = cgi.escape(str(qs.get("book","")[0]))
-      if len(detailedBook) > 0:
-        html_template = Template(filename = 'templates/detailedTemplate.html')
+      searchText = qs.get("search","")
+      if len(searchText) > 0:
+        searchText = str(searchText[0])
+      searchType = qs.get("radiobutton","")
+      if len(searchType) > 0:
+        searchType = str(searchType[0])
+      if not len(searchText) > 0:
+        detailedBook = cgi.escape(str(qs.get("book","")[0]))
+        if len(detailedBook) > 0:
+          html_template = Template(filename = 'templates/detailedTemplate.html')
+          html_dict = {
+             'bookInfo': getBookInfo(detailedBook,mysql_connection)
+          }
+          response = html_template.render(**html_dict)
+          mysql_connection.close()
+          return response.encode()
+      if len(searchText) > 0:
+        html_template = Template(filename = 'templates/home.html')
         html_dict = {
-           'bookInfo': getBookInfo(detailedBook,mysql_connection)
-        }
+         'presidents': searchHandler(mysql_connection,searchType,searchText)
+        } # html_dict
         response = html_template.render(**html_dict)
         mysql_connection.close()
         return response.encode()
