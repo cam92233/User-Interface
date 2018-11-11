@@ -3,6 +3,7 @@ from contextlib import closing
 from pprint import pprint
 import mysql.connector
 import cgi
+import uwsgi
 from cgi import parse_qs, escape
 
 # setup mysql connection information
@@ -37,6 +38,7 @@ def query_presidents(mysql_connection):
 def application(env, start_response):
     mysql_connection = mysql.connector.connect(**mysql_connection_info)
     start_response('200 OK', [('Content-Type', 'text/html')])
+    uwsgi.cache_set("name","John")
     qs = parse_qs(env['QUERY_STRING'])
     if len(qs) > 0:
       searchText = qs.get("search","")
@@ -66,7 +68,8 @@ def application(env, start_response):
     pprint(env)
     html_template = Template(filename = 'templates/home.html')
     html_dict = {
-       'presidents': query_presidents(mysql_connection)
+       'presidents': query_presidents(mysql_connection),
+       'acct_name': uwsgi.cache_get("name")
     } # html_dict
     response = html_template.render(**html_dict)
     mysql_connection.close()

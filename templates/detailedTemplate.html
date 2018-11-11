@@ -187,18 +187,22 @@
     </style>
 </head>
 <body>
-    <div id="nav">
-      <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
-      <span class="worm">Worm</span>
-      <div class="search">
-        <form class="rad">
-          <input type="radio" name="cat" checked="checked"></input> ISBN 
-          <input type="radio" name="cat"></input> Title 
-          <input type="radio" name="cat"></input> Author
-          <input type="radio" name="cat"></input> Subject 
-        </form>
-        <input type="text" class="searchbar"  placeholder="Search..."></input><button type="submit" class="searchbtn"><i class="fa fa-search"></i></button> 
-      </div>
+  <div id="nav">
+    <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+    <span class="worm">Worm</span>
+    <div class="search">
+      <form class="rad" action="" method="GET">
+        <input type="radio" name="radiobutton" value="isbn" checked="checked"></input> ISBN 
+        <input type="radio" name="radiobutton" value="title"></input> Title 
+        <input type="radio" name="radiobutton" value="author"></input> Author
+        <input type="radio" name="radiobutton" value="subject"></input> Subject 
+        <input type="text" required class="searchbar"  name="search" placeholder="Search...">
+        </input>
+        <button type="submit" class="searchbtn" value="Submit">
+        <i class="fa fa-search"></i>
+        </button> 
+      </form>
+  </div>
       <div class="menu">
         <a href="">cart (2)</a>
         <a href="">checkout</a>
