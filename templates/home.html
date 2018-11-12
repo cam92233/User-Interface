@@ -52,37 +52,36 @@
   </head>
 <body>
 
-  <div id="nav">
-         <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
-        <span class="worm">Worm</span>
-        <div class="search">
-            <form class="rad" action="" method="GET">
-                <input type="radio" name="radiobutton" value="isbn" checked="checked"></input> ISBN 
-                <input type="radio" name="radiobutton" value="title"></input> Title 
-                <input type="radio" name="radiobutton" value="author"></input> Author
-                <input type="radio" name="radiobutton" value="subject"></input> Subject
-            
-            <input type="text" required class="searchbar"  name="search" placeholder="Search...">
-            </input>
-            <button type="submit" class="searchbtn" value="Submit">
-                <i class="fa fa-search"></i>
-            </button> 
-            </form>
+<div id="nav">
+  <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+  <span class="worm">Worm</span>
+  <div class="search">
+    <form class="rad" action="" method="GET">
+      <input type="radio" name="radiobutton" value="isbn" checked="checked"></input> ISBN 
+      <input type="radio" name="radiobutton" value="title"></input> Title 
+      <input type="radio" name="radiobutton" value="author"></input> Author
+      <input type="radio" name="radiobutton" value="subject"></input> Subject 
+      <input type="text" required class="searchbar"  name="search" placeholder="Search...">
+      </input>
+      <button type="submit" class="searchbtn" value="Submit">
+      <i class="fa fa-search"></i>
+      </button> 
+    </form>
+  </div>
+  <div class="menu">
+    <a href="./static/cartproto.htm">cart <i class="fa fa-shopping-cart"></i></a>
+    <a href="checkoutproto.htm">checkout</a>
+    <ul>
+      <div class="top">
+        <li><a href="profile.html">${acct_name} <i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="static/index.html">settings</a></li>
+          <li><a href="home.html">sign out</a></li>
         </div>
-        <div class="menu">
-            <a href="./static/cartproto.htm">cart <i class="fa fa-shopping-cart"></i></a>
-            <a href="checkoutproto.htm">checkout</a>
-            <ul>
-                <div class="top">
-                    <li><a href="profile.html">account <i class="fa fa-sort-down"></i></a></li> 
-                    <div class="drop">
-                        <li><a href="static/index.html">settings</a></li>
-                        <li><a href="home.html">sign out</a></li>
-                    </div>
-                </div>
-            </ul>
-        </div>
-    </div>
+      </div>
+    </ul>
+  </div>
+</div>
 
 <div class="filler"></div>
   <div class="clearfix">

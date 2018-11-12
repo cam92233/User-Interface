@@ -111,8 +111,7 @@
 <div id="div1" align = "center" class = info> 
     <h2 id="f1">johndoe123</h2>
     <br>
-    <h2 id="f2">John</h2>
-    <h2 id="f3">Doe</h2>
+    <h2 id="f2">John Doe</h2>
     <br>
     <h2 id="f4">johndoe@uga.edu</h2>
 </div>
@@ -143,7 +142,6 @@
     function editText() {
         document.getElementById("f1").contentEditable = true
          document.getElementById("f2").contentEditable = true
-         document.getElementById("f3").contentEditable = true
          document.getElementById("f4").contentEditable = true
         if(document.getElementById("btn1").innerHTML=="Edit Profile")
             document.getElementById("btn1").innerHTML = "Save Changes"
@@ -151,7 +149,6 @@
             document.getElementById("btn1").innerHTML = "Edit Profile"
             document.getElementById("f1").contentEditable = false
             document.getElementById("f2").contentEditable = false
-            document.getElementById("f3").contentEditable = false
             document.getElementById("f4").contentEditable = false
         }
     }
