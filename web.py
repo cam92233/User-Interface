@@ -69,7 +69,7 @@ def application(env, start_response):
     html_template = Template(filename = 'templates/home.html')
     html_dict = {
        'presidents': query_presidents(mysql_connection),
-       'acct_name': uwsgi.cache_get("name")
+       'acct_name': uwsgi.cache_get("name").decode('ASCII')
     } # html_dict
     response = html_template.render(**html_dict)
     mysql_connection.close()
