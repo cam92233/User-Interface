@@ -4,8 +4,8 @@ import mysql.connector
 mysql_connection_info = {
     'host': 'localhost',
     'user': 'root',
-    'passwd': '^What4said',
-    'database': 'bookworm',
+    'passwd': 'INSERT PASS',
+    'database': 'DB NAME',
     'auth_plugin': 'mysql_native_password'
 }
 
