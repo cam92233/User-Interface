@@ -1,3 +1,4 @@
+#coding: utf-8
 # 15 books
 # https://play.google.com/store/books/details/Dr_Seuss_Green_Eggs_and_Ham?id=ZK7xAwAAQBAJ
 class Book:
@@ -5,7 +6,7 @@ class Book:
     self.attributes = [subject, title, isbn, author, detail, price, pic_url, promo, amount]
   def printBook(self):
     a = self.attributes
-    string = "INSERT INTO `books` VALUES ({},{},{},{},{},{},{},{},{})".format(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8])
+    string = "INSERT INTO `books` VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8])
     print string
     return string
 
@@ -143,3 +144,6 @@ detail="While in Paris, Harvard symbologist Robert Langdon is awakened by a phon
 pic_url="https://books.google.com/books/content/images/frontcover/6-pmDwAAQBAJ?fife=w400-h600"
 DaVinci = Book(title=title, isbn=isbn, author=author, detail=detail, pic_url=pic_url)
 Booklist.append(DaVinci)
+
+for i in Booklist:
+  i.printBook()
