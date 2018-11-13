@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+   font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* */
+.container {
+       margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); padding: 20px;
+    background-color: white;
+}
+
+/*Style for mandatory fields*/
+input[type=name], input[type=password], input[type=address], input[type=email], input[type=birthdate], input[type=username] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/*Registration form style */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Submit button */
+.loginbtn {
+    background-color: #000000;
+    color: white;
+    padding: 20px 22px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.loginrbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+register {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    padding:20px;background-color: #f1f1f1;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+
+
+<form action="/login" method="post">
+  <div class="container">
+
+
+    <h1>Login</h1>
+    <hr>
+
+    <label for="username"><b>Username</b></label>
+    
+<input type="username" placeholder="Enter Username" name="user" required>
+
+   
+ <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pass" required>
+ <hr/>  
+<input type="submit" class="loginbtn" value="Login">
+<div class="signin">
+    <p>Not yet registered? <a href="registration.htm">Register</a>.</p>
+ </div> </div>
+</form>
+
+</body>
+</html>

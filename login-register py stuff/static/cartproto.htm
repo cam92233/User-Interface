@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<head>
+<style type="text/css">
+	body{
+	font-family:helvetica;
+	font-size:0.9em;
+	padding:0px;
+	margin:0px;
+	height:100%;
+}
+h1{
+	text-transform:uppercase;
+	color:#505050;
+	text-align:right;
+	font-weight:100;
+	letter-spacing:1px;
+	line-height:normal;
+	font-size:2.5em;
+	font-family:monospace;
+	padding-right:10px;
+	border-bottom:1px #bfbfbf solid;
+}
+
+hr{
+	border:1px #bfbfbf solid;
+	border-top:none;
+}
+
+.book{
+	display:inline-block;
+	vertical-align:middle;
+	font-size:2em;
+	font-weight:bold;
+}
+.worm{
+	display:inline-block;
+	vertical-align:middle;
+	font-family:georgia;
+	font-style:italic;
+	font-size:2em;
+	padding:3px;
+	background:#fff;
+	top:0px;
+}
+
+#nav{
+	position:fixed;
+	top:0px;
+	left:0px;
+	padding:10px;
+	width:100%;
+	height:6%;
+	z-index:1;
+	background:#dfdfdf;
+	overflow:none;
+	font-size:0.9em;
+	font-family:helvetica;
+	border-bottom:1px #999 solid;
+}
+
+#nav ul{
+	list-style-type:none;
+	display:inline;
+	padding:0px;
+}
+#nav li{
+	background:black;
+}
+button, #nav a{
+	color:#fff;
+	text-decoration:none;
+	font-weight:bold;
+	letter-spacing:1px;
+	font-variant:small-caps;
+	background:black;
+	border:none;
+	padding:10px 15px 10px 15px;
+}
+
+button:hover{
+	background:#999;
+}
+
+#nav a:hover{
+	background:#fff;
+	color:#999;
+}
+
+.top{
+	display:inline-block;
+}
+
+.top li{
+	display:inline-block;
+	text-align:center;
+}
+
+.top a{
+	display:inline-block;
+	width:90px;
+}
+
+.drop{
+	display:none;
+	position:absolute;
+
+}
+
+.drop li{
+	display:block;
+}
+
+.top:hover .drop{
+	display:block;
+}
+
+.search{
+	display:inline;
+	float:left;
+	margin-top:0.2%;
+	width:50%;
+}
+
+.rad{
+	display:inline;
+	background:#000;
+	color:#FFF;
+	font-size:1em;
+	font-weight:bold;
+	padding:8px 5px 8px 5px;
+}
+.searchbtn{
+	padding:8px;
+	border:none;
+	background: #000;	
+	margin:0px;
+}
+.searchbtn:hover{
+	background:#999;
+}
+.fa-search{
+	color:white;
+}
+.searchbar{
+	width:40%;
+	padding: 6px;
+	font-weight:bold;
+	font-size:13px;
+}
+
+.menu{
+	float:right;
+	margin-right:3%;
+}
+
+.filler{
+	padding-top:6%;
+	background:#fff;
+}
+
+#container{
+	overflow:auto;
+	height:100%;
+	background:#fff;
+	padding:0 20% 2% 20%;
+}
+
+.items{
+	border: solid #fff 20px;
+	background:#fff;
+	border-spacing:1px;
+	border-radius:10px;	
+	text-align:center;
+}
+
+.items th{
+	font-size:1.3em;
+	text-transform:uppercase;
+	align:left;
+	padding:7px;
+	letter-spacing:1px;
+    	font-family: monospace;
+	font-weight:100;
+}
+
+.items td{
+	padding:7px;
+}
+
+.items button{
+	padding: 3px;
+}
+
+.items tr:nth-child(even){
+	background:#efefef;
+}
+
+.items th:nth-child(2){
+	width:50%;
+}
+
+.imgr{
+	width:20%;
+}
+
+.tbimg{
+	width:auto;
+	max-height:70%;
+}
+
+.ship{
+	text-align:right;
+}
+
+.ship table{
+	display:inline;
+}
+.ship th, .ship td{
+	padding:3px;
+}
+
+.ship select{
+	padding:3px;
+}
+</style>
+<title>View Cart</title>
+<link rel="stylesheet" href="css/check.css" type="text/css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="nav">
+	<span class="book">BOOK</span><span class="worm">Worm</span>
+	<div class="search">
+		<form class="rad">
+    			<input type="radio" name="cat" checked="checked"></input> ISBN 
+			<input type="radio" name="cat"></input> Title 
+			<input type="radio" name="cat"></input> Author
+			<input type="radio" name="cat"></input> Subject
+		</form>
+		<input type="text" class="searchbar"  placeholder="Search..."></input><button type="submit" class="searchbtn"><i class="fa fa-search"></i></button> 
+	</div>
+	<div class="menu">
+		<a href="">cart (0) <i class="fa fa-shopping-cart"></i></a>
+		<a href="/checkout">checkout</a>
+	<ul>
+		<div class="top">
+			<li><a href="/profile">account <i class="fa fa-sort-down"></i></a></li> 
+			<div class="drop">
+				<li><a href="">settings</a></li>
+				<li><a href="/signout">sign out</a></li>
+			</div>
+		</div>
+	</ul>
+	</div>
+</div>
+<div class="filler"></div>
+
+<div id="container" align="center">
+<h1>Cart</h1>
+
+<table class="items">
+<tr>
+<th name="img"></th>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+</table>
+Your cart is empty.<br/><br/><br/>
+<hr/>
+<br/>
+<a href="/"><button>Browse Books</button></a>
+</div>
+</body>
+</html>

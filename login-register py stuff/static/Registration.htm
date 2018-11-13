@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+	<head>
+
+	<link rel="stylesheet" href="static/style.css" type="text/css"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+
+			body {
+align:center;font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+}
+
+* {
+box-sizing: border-box;
+}
+
+/* */
+.container {
+ width:45%;margin:auto;padding: 20px;
+    background-color: white;
+}
+
+/*Style for mandatory fields*/
+input[type=name], input[type=password], input[type=address], input[type=email], input[type=birthdate], input[type=username] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/*Registration form style */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Submit button */
+.registerbtn {
+    background-color: #000000;
+    color: white;
+    padding: 20px 22px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+login {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  padding:20px;  background-color: #f1f1f1;
+    text-align: center;
+}
+
+
+input[type=text]{
+width:17%;padding:15px;margin:5px 0 22px 0; display:inline-block;border:none; background:#f1f1f1;}
+</style>
+	</head>
+
+
+	<body>
+		
+
+<form action="/register"  method="POST">
+
+		<div class="container">
+
+			<h1>Registration</h1><hr/>
+			
+
+<label for="name"><b>Name</b></label>
+    <input type="name" placeholder="Enter Name" name="name" required>
+
+    			<label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+
+    
+			<label for="address"><b>Address Line 1</b></label>
+ <input type="address" placeholder="Enter Address" name="ad1" required>
+  
+			<label for="address"><b>Address Line 2 (optional)</b></label>
+ <input type="address" placeholder="Enter Address" name="ad2">
+<label><b>City</b></label> <input type="text" name="city" placeholder="Enter city" required/>  
+			<label><b>State</b></label> <input type="text" name="st" placeholder="Enter state"/> <label><b>Zipcode</b></label> <input type="text" name="zip" placeholder="Enter zipcode" /><br/> 
+    			
+<label for="birthdate"><b>Birthdate</b></label>
+    
+			<input type="birthdate" placeholder="Enter Birthdate" name="date" required>
+    
+   
+			<label for="username"><b>Username</b></label>
+   
+			<input type="username" placeholder="Enter a Unique Username" name="user" required>
+    
+    
+			<label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter a Unique Password" name="pass" required>
+    
+    <hr>
+    
+    <input type="submit" class="registerbtn" value="Register"/>
+  
+  <div class="signin">
+    <p>Already registered? <a href="login.htm">Login</a>.</p></div>
+  </div>
+</form>
+
+</body>
+</html>
+
+
+
