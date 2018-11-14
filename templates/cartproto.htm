@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>
+<style type="text/css">
+	body{
+	font-family:helvetica;
+	font-size:0.9em;
+	padding:0px;
+	margin:0px;
+	height:100%;
+}
+h1{
+	text-transform:uppercase;
+	color:#505050;
+	text-align:right;
+	font-weight:100;
+	letter-spacing:1px;
+	line-height:normal;
+	font-size:2.5em;
+	font-family:monospace;
+	padding-right:10px;
+	border-bottom:1px #bfbfbf solid;
+}
+
+hr{
+	border:1px #bfbfbf solid;
+	border-top:none;
+}
+
+.filler{
+	padding-top:6%;
+	background:#fff;
+}
+
+#container{
+	overflow:auto;
+	height:100%;
+	background:#fff;
+	padding:0 20% 2% 20%;
+}
+
+.items{
+	border: solid #fff 20px;
+	background:#fff;
+	border-spacing:1px;
+	border-radius:10px;	
+	text-align:center;
+}
+
+.items th{
+	font-size:1.3em;
+	text-transform:uppercase;
+	align:left;
+	padding:7px;
+	letter-spacing:1px;
+    	font-family: monospace;
+	font-weight:100;
+}
+
+.items td{
+	padding:7px;
+}
+
+.items button{
+	padding: 3px;
+}
+
+.items tr:nth-child(even){
+	background:#efefef;
+}
+
+.items th:nth-child(2){
+	width:50%;
+}
+
+.imgr{
+	width:20%;
+}
+
+.tbimg{
+	width:auto;
+	max-height:70%;
+}
+
+.ship{
+	text-align:right;
+}
+
+.ship table{
+	display:inline;
+}
+.ship th, .ship td{
+	padding:3px;
+}
+
+.ship select{
+	padding:3px;
+}
+</style>
+<title>View Cart</title>
+  <link rel="stylesheet" href="css/check.css" type="text/css"/>
+  <link rel="stylesheet" href="/web/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="nav">
+    <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+    <span class="worm">Worm</span>
+    <div class="search">
+      <form class="rad" action="" method="GET">
+        <input type="radio" name="radiobutton" value="isbn" checked="checked"></input> ISBN 
+        <input type="radio" name="radiobutton" value="title"></input> Title 
+        <input type="radio" name="radiobutton" value="author"></input> Author
+        <input type="radio" name="radiobutton" value="subject"></input> Subject 
+        <input type="text" required class="searchbar"  name="search" placeholder="Search...">
+        </input>
+        <button type="submit" class="searchbtn" value="Submit">
+        <i class="fa fa-search"></i>
+        </button> 
+      </form>
+  </div>
+        <div class="menu">
+            <a href="cartproto.htm">cart (2) <i class="fa fa-shopping-cart"></i></a>
+            <a href="checkoutproto.htm">checkout</a>
+            <ul>
+                <div class="top">
+                    <li><a href="profile.html">account <i class="fa fa-sort-down"></i></a></li> 
+                    <div class="drop">
+                        <li><a href="./static/">settings</a></li>
+                        <li><a href="home.html">sign out</a></li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+<div class="filler"></div>
+
+<div id="container" align="center">
+<h1>Cart</h1>
+
+<table class="items">
+<tr>
+<th name="img"></th>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+
+</tr>
+<tr>
+<td><img src="https://i.imgur.com/RGqOfHj.png" class="tbimg"/></td>
+<td>The Scarlet Letter<br/>
+<sup>Nathaniel Hawthorne</sup></td>
+<td><input type="text" value="5" size="1"></input><button><i class="fa fa-check"></i></button></td>
+<td>$1,000,000.00</td>
+<td>$5,000,000.00</td>
+
+</tr>
+<tr>
+<td><img src="https://i.imgur.com/NZaNPl2.png" class="tbimg"/></td>
+<td>1984<br/>
+<sup>George Orwell</sup></td>
+
+<td><input type="text" value="1" size="1"></input><button><i class="fa fa-check"></i></button></td>
+<td>$10.00</td>
+<td>$10.00</td>
+
+</tr>
+</table><br/>
+<table>
+<tr><td><b>Subtotal:</b></td><td> $5,000,010.00</td></tr>
+</table><hr/>
+
+<button>Continue Browsing</button> | <button>Check out >></button>
+</div>
+</body>
+</html>

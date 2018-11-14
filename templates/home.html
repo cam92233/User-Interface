@@ -46,11 +46,10 @@
     display: table;
 }
     </style>
-    <link rel="stylesheet" href="css/check.css" type="text/css"/>
     <link rel="stylesheet" href="/web/static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
   </head>
-<body>
+<body onload="checkCookie()">
 
 <div id="nav">
   <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
@@ -73,10 +72,10 @@
     <a href="checkoutproto.htm">checkout</a>
     <ul>
       <div class="top">
-        <li><a href="profile.html">${acct_name} <i class="fa fa-sort-down"></i></a></li> 
+        <li><a href="profile.html" id="acct">${username}<i class="fa fa-sort-down"></i></a></li> 
         <div class="drop">
           <li><a href="static/index.html">settings</a></li>
-          <li><a href="home.html">sign out</a></li>
+          <li><a href="static/Login.htm" id="Sign-in" onclick="logout('username')">Sign In</a></li>
         </div>
       </div>
     </ul>
@@ -84,6 +83,7 @@
 </div>
 
 <div class="filler"></div>
+
   <div class="clearfix">
   % for president in presidents:
     <div class="img-container">
@@ -93,7 +93,51 @@
     </div>
     % endfor
 </div>
-  
+<a href="?update=1">Changing the price</a>
+<script>
+function logout(cname){
+    setCookie(cname,'',0);
+}
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    account = document.getElementById("acct");
+    account = account.innerHTML
+    console.log(account)
+    var compare = 'Account<i class="fa fa-sort-down"></i>';
+    if(account != compare){
+      console.log(2);
+      setCookie("username",account,30)
+      var signInEle = document.getElementById("Sign-in");
+      signInEle.innerHTML = "Sign Out";
+      signInEle.href="http://172.19.50.140/web/";
+      console.log(signInEle);
+      console.log(3);
+    } 
+}
+
+</script>
 
 </body>
 </html>

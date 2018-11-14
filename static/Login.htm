@@ -69,25 +69,68 @@ register {
 </head>
 <body>
 
-<form action="/action_page.php">
+<form action="http://172.19.50.140/web/" method="Post">
   <div class="container">
     <h1>Login</h1>
     <hr>
 
     <label for="username"><b>Username</b></label>
-    <input type="username" placeholder="Enter Username" name="username" required>
+    <input id="user" type="username" placeholder="Enter Username" name="username" required>
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <input id="pass" type="password" placeholder="Enter Password" name="password" required>
     
     <hr>
     
-    <button type="submit" class="loginbtn">Login</button>
+    <button  onclick="onClick" class="loginbtn">Login</button>
   </div>
     <div class="container signin">
     <p>Not yet registered? <a href="Registration.htm"> Register</a>.</p>
   </div>
 </form>
-
+<script>
+  var httpRequest;
+  function func() {
+      if(httpRequest.status === 200) {
+      var response = httpRequest.responseText;
+      console.log(response);
+      if(reponse == "True"){
+        var num = document.getElementById('user');
+        num = num.value;
+        setCookie("username",num,30);
+      }
+  }
+  function onClick() {
+      httpRequest = new XMLHttpRequest();
+      httpRequest.onreadystatechange = func();
+      var num = document.getElementById('user');
+      num = num.value;
+      var frombase = document.getElementById('pass');
+      frombase = frombase.value;
+      var queryString = '?username=' + frombase + '&password=' + tobase;
+      queryString = '/web/' + queryString;
+      httpRequest.open('POST', queryString);
+      httpRequest.send();
+  }
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=http://172.19.50.140/web/";
+  }
+function loadDoc(){
+  var xhttp = new XMLHttpRequest();
+  var xhttp.onreadystatechange=func();{
+    if(this.readyState = 4 && this.status == 200){
+      if(this.responseText=="True"){
+      var num = document.getElementById('user');
+      num = num.value;
+        setCookie("username",num,30)
+      }
+    }
+  }
+  xhttp.open()
+}
+</script>
 </body>
 </html>
