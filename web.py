@@ -48,11 +48,18 @@ def query_presidents(mysql_connection):
     presidents = mysql_cursor.fetchall()
     return presidents
 
+def updateBookStock(isbn,mysql_connection):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("UPDATE books SET amount = amount - 1 WHERE title='Test Title';")
+
 def application(env, start_response):
     mysql_connection = mysql.connector.connect(**mysql_connection_info)
     start_response('200 OK', [('Content-Type', 'text/html')])
     username = "Account"
     qs = parse_qs(env['QUERY_STRING'])
+    
+    updateBookStock(9999999, mysql_connection)
+    
     if len(qs) > 0:
       action = qs.get("update")
       action = action[0]
@@ -113,7 +120,8 @@ def application(env, start_response):
           response = html_template.render(**html_dict)
           mysql_connection.close()
           return response.encode()  
-          
+
+    pprint(env)
     html_template = Template(filename = 'templates/home.html')
     username = "Account"
     html_dict = {
