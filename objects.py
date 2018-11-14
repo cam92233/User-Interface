@@ -35,13 +35,9 @@ def deleteBook(isbn,mysql_connection):
     pprint(bookInfo)
     return bookInfo
 
-def updateBookStock(isbn,mysql_connection,orderAmount):
+def updateBookStock(mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("SELECT amount FROM books WHERE isbn='{}'".format(isbn))
-    bookInfo = mysql_cursor.fetchall()
-    amount = bookInfo - 1
-    pprint(bookInfo)
-    return bookInfo
+    mysql_cursor.execute("UPDATE books SET price = price - 1.0 WHERE title='Test Title';")
 
 def application(env, start_response):
     mysql_connection = mysql.connector.connect(**mysql_connection_info)
