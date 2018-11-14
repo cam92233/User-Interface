@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Main Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    body{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+        background: lightgrey
+		}
+      
+		h1{
+		  font-weight: 300;
+		}
+      
+         h2 {
+            display: inline;
+            font-weight: 300;
+        }
+      
+         p {
+            font-weight: 200;
+            display: inline;
+        }
+      
+        .box {
+            margin-top: 100px;
+            background:white; 
+            width: 500px; 
+            height: 400px; 
+            padding: 70px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            margin-top: 150px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+		
+        .book{
+			display:inline-block;
+			vertical-align:middle;
+			font-size:2em;
+			font-weight:bold;
+		}
+      
+		.worm{
+			display:inline-block;
+			vertical-align:middle;
+			font-family:georgia;
+			font-style:italic;
+			font-size:2em;
+			padding:3px;
+			background:#fff;
+			top:0px;
+		}
+      
+		#nav{
+			position:fixed;
+			top:0px;
+			left:0px;
+			padding:20px;
+			width:100%;
+			height:6%;
+			z-index:1;
+			overflow:none;
+			font-size:0.9em;
+			font-family:helvetica;
+			background:#A7D5DC;
+		}
+      
+        #nav ul{
+            list-style-type:none;
+            display:inline;
+            padding:0px;
+        }
+        
+        #nav li{
+            background:black;
+        }
+        
+      button, #nav a {
+        color:#fff;
+        text-decoration:none;
+        background:black;
+        border:none;
+        padding:10px 15px 10px 15px;
+      }
+        button {
+            background: black; 
+            color: white;
+            border: none;
+            box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 10px;
+            width: 150px;
+        }
+        
+          button:hover{
+			background:#999;
+            cursor: pointer;
+        }
+        
+      #nav a:hover {
+          background: #999;
+      }
+      
+    .top{
+        display:inline-block;
+    }
+    .top li{
+        display:inline-block;
+        text-align:center;
+    }
+    .top a{
+        display:inline-block;
+        width:90px;
+    }
+    .drop{
+        display:none;
+        position:absolute;
+    }
+    .drop li{
+        display:block;
+    }
+    .top:hover .drop{
+        display:block;
+    }
+    .menu{
+        float:right;
+        margin-right:3%;
+    }
+    .wormImg {
+            width: 40px;
+            padding-left: 5px;
+    }
+      
+     
+      
+    </style>
+</head>
+
+<body>
+ 
+<div id = nav>
+ <span class="book">BOOK</span>
+ <span class="worm">Worm</span>
+ <span class = "book"><img src ="https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></span>
+ <div class = "menu">
+        <ul>
+      <div class="top">
+        <li><a href="profile.html" id="acct">Account <i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="static/Login.htm" id="sign-out" onclick="logout('username')">Sign Out</a></li>
+        </div>
+      </div>
+    </ul>
+ </div>
+</div>
+    
+
+
+<div class = box align = center>
+    <h1>Administrator Management Console</h1>
+    <br>
+    <button>Books</button>
+    <br><br><br>
+    <button>Users</button>
+    <br><br><br>
+    <button >Orders</button>
+    <br><br><br>
+    <button>Promotions</button>
+</div>   
+  
+</body>
+
+</html>
