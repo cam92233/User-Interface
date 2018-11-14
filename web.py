@@ -34,6 +34,11 @@ def registerUser(mysql_connection,name,email,address,birthdate,username,password
       mysql_cursor = mysql_connection.cursor(dictionary = True)
       mysql_cursor.execute("INSERT INTO accounts (name,email,birthdate,username,password,acct_type) values('{}','{}','{}','{}','{}','{}')".format(name,email,birthdate,username,password,"customer"))
       mysql_connection.commit()
+    
+def deleteUser(mysql_connection, username):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("DELETE FROM accounts WHERE username='{}'".format(username))
+    mysql_connection.commit()
       
 def updateBook(mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
