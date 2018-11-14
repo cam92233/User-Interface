@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>    
+<link rel="stylesheet" href = "profileStyle.css">
+</head>
+<body>
+
+<div class = header>
+<span class="book">BOOK</span>
+<span class="worm">Worm</span>
+<span class = "book"><img src ="https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg" ></span>
+</div>
+
+
+<div class = box>
+<h1 align = "center">Your Profile</h1>
+
+<div align = "center" class = profileImg>
+    <img src = "http://showbizy-dev.cygnismedia.com/images/default-user.png" alt = "Avatar" class = "profilePic">
+</div>
+<br>
+    
+    
+<div id="div1" align = "center" class = info> 
+    <h2 id="f1">${username}</h2>
+    <br>
+    <h2 id="f2">${name}</h2>
+    <br>
+    <h2 id="f4">${email}</h2>
+    <br><br>
+</div>
+    
+<div align = "center" class = help>
+    <button type = "submit" class = "editbtn" id="btn1" onclick="editText()">Edit Profile</button>
+    <button type = "submit" class = "changebtn" id="btn2" onclick="changePwd()">Change Password</button>
+    <button type = "submit" class = "deletebtn" onclick="delAct()">Delete Account</button>
+</div>
+    
+<div align = "center" id = "myAccount" class = "modal">
+    <div class = "modal-content">
+        <span class = "close" onclick = "closeWin()"> &times;
+        </span>
+        <br><br><br>
+        <h2>Are you sure you would like to delete your account?</h2>
+        <img src ="https://cdn.shopify.com/s/files/1/1061/1924/files/Crying_Face_Emoji.png?9898922749706957214" class = "sadFace">
+        <br><br>
+        <button type = "submit">Yes</button> 
+        <div class = "divider"></div>
+        <button type = "submit" onclick = "closeWin()">No</button>
+    </div>
+</div>
+    
+
+<div align = "center" id = "pwd" class = "modal">
+    <div class = "modal-content">
+        <span class = "close" onclick = "closeWin()"> &times;
+        </span>
+        <br><br><br>
+        <h2>Change Password</h2>
+        <br><br><br>
+        <p>Old Password: </p> 
+        <br><br>
+        <input type = "password" id = "myPwd">
+        <br><br>
+        <p>New Password: </p>
+        <br><br>
+        <input type = "password" id = "myPwd2">
+        <br><br><br>
+        <input type="checkbox" onclick="showPwd()"><p>Show Characters</p>
+        <br><br><br>
+        <button type = "submit">Submit</button> 
+        <div class = "divider"></div>
+        <button type = "submit" onclick = "closeWin()">Cancel</button>
+    </div>
+</div>
+
+<script>
+    function editText() {
+        document.getElementById("f1").contentEditable = true
+         document.getElementById("f2").contentEditable = true
+         document.getElementById("f4").contentEditable = true
+        if(document.getElementById("btn1").innerHTML=="Edit Profile")
+            document.getElementById("btn1").innerHTML = "Save Changes"
+        else {
+            document.getElementById("btn1").innerHTML = "Edit Profile"
+            document.getElementById("f1").contentEditable = false
+            document.getElementById("f2").contentEditable = false
+            document.getElementById("f4").contentEditable = false
+        }
+    }
+           
+    function showPwd() {
+        var x = document.getElementById("myPwd");
+        var y = document.getElementById("myPwd2");
+        if (x.type === "password") {
+            x.type = "text";
+            y.type = "text";
+        } else {
+            x.type = "password";
+            y.type = "password";
+        }
+    }
+    
+    var modal;
+    
+    function delAct() {
+        modal = document.getElementById('myAccount');
+        modal.style.display = "block";
+    }
+    
+    function changePwd() {
+        modal = document.getElementById('pwd');
+        modal.style.display = "block"; 
+    }
+    
+    function closeWin() {
+        modal.style.display = "none";
+    }
+    
+
+        
+</script>
+    
+</div> 
+    
+</body>
+</html>
