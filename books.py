@@ -1,13 +1,11 @@
 #coding: utf-8
-# 15 books
-# https://play.google.com/store/books/details/Dr_Seuss_Green_Eggs_and_Ham?id=ZK7xAwAAQBAJ
 class Book:
   def __init__(self, subject="Fiction", title=None, isbn=None, author=None, detail=None, price=5.00, pic_url=None, promo=0, amount=5):
     self.attributes = [subject, title, isbn, author, detail, price, pic_url, promo, amount]
   def printBook(self):
     a = self.attributes
-    string = "INSERT INTO `books` VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8])
-    print string
+    string = "INSERT INTO `books` VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}');".format(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8])
+    # print string
     return string
 
 Booklist = list()
@@ -77,7 +75,7 @@ Booklist.append(MobyDick)
 title="Treasure Island"
 isbn=9781773130439
 author="Robert Louis Stevenson"
-detail='"Treasure Island is an adventure novel by Scottish author Robert Louis Stevenson, narrating a tale of "buccaneers and buried gold". It was originally serialized in the childrens magazine Young Folks between 1881 through 1882 under the title Treasure Island, or the mutiny of the Hispaniola, credited to the pseudonym "Captain George North". It was first published as a book on 14 November 1883 by Cassell & Co. Treasure Island is traditionally considered a coming-of-age story, and is noted for its atmosphere, characters, and action. It is also noted as a wry commentary on the ambiguity of morality—as seen in Long John Silver—unusual for childrens literature. It is one of the most frequently dramatized of all novels. Its influence is enormous on popular perceptions of pirates, including such elements as treasure maps marked with an "X", schooners, the Black Spot, tropical islands, and one-legged seamen bearing parrots on their shoulders."'
+detail='Treasure Island is an adventure novel by Scottish author Robert Louis Stevenson, narrating a tale of "buccaneers and buried gold". It was originally serialized in the childrens magazine Young Folks between 1881 through 1882 under the title Treasure Island, or the mutiny of the Hispaniola, credited to the pseudonym "Captain George North". It was first published as a book on 14 November 1883 by Cassell & Co. Treasure Island is traditionally considered a coming-of-age story, and is noted for its atmosphere, characters, and action. It is also noted as a wry commentary on the ambiguity of morality—as seen in Long John Silver—unusual for childrens literature. It is one of the most frequently dramatized of all novels. Its influence is enormous on popular perceptions of pirates, including such elements as treasure maps marked with an "X", schooners, the Black Spot, tropical islands, and one-legged seamen bearing parrots on their shoulders.'
 pic_url="https://books.google.com/books/content/images/frontcover/KMkDDQAAQBAJ?fife=w400-h600"
 TreasureIsland = Book(title=title, isbn=isbn, author=author, detail=detail, pic_url=pic_url)
 Booklist.append(TreasureIsland)

@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-    font-family: Arial, Helvetica, sans-serif;
+   font-family: Arial, Helvetica, sans-serif;
     background-color: grey;
 }
 
@@ -14,7 +14,11 @@ body {
 
 /* */
 .container {
-    padding: 20px;
+       margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); padding: 20px;
     background-color: white;
 }
 
@@ -40,7 +44,7 @@ hr {
 }
 
 /* Submit button */
-.registerbtn {
+.loginbtn {
     background-color: #000000;
     color: white;
     padding: 20px 22px;
@@ -51,60 +55,46 @@ hr {
     opacity: 0.9;
 }
 
-.registerbtn:hover {
+.loginrbtn:hover {
     opacity: 1;
 }
 
 /* Add a blue text color to links */
-login {
+register {
     color: dodgerblue;
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {
-    background-color: #f1f1f1;
+    padding:20px;background-color: #f1f1f1;
     text-align: center;
 }
 </style>
 </head>
 <body>
 
-<form action="/action_page.php">
+
+
+<form action="/login" method="post">
   <div class="container">
-    <h1>Registration</h1>
-      <p>All fields are required</p>
+
+
+    <h1>Login</h1>
     <hr>
 
-    <label for="name"><b>Name</b></label>
-    <input type="name" placeholder="Enter Name" name="name" required>
-
-    <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter Email" name="email" required>
-
-    <label for="address"><b>Address</b></label>
-    <input type="address" placeholder="Enter Address" name="address" required>
-    
-    <label for="birthdate"><b>Birthdate</b></label>
-    <input type="birthdate" placeholder="Enter Birthdate" name="birthdate" required>
-    
     <label for="username"><b>Username</b></label>
-    <input type="username" placeholder="Enter a Unique Username" name="username" required>
     
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter a Unique Password" name="password" required>
-    
-    <hr>
-    
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
-  
-  <div class="container signin">
-    <p>Already registered? <login href="Login.htm">Login</a>.</p>
-  </div>
+<input type="username" placeholder="Enter Username" name="user" required>
+
+   
+ <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pass" required>
+ <hr/>  
+<input type="submit" class="loginbtn" value="Login">
+<div class="signin">
+    <p>Not yet registered? <a href="registration.htm">Register</a>.</p>
+ </div> </div>
 </form>
 
 </body>
 </html>
-
-
-
