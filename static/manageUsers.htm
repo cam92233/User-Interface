@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html class = html>
 <head>
-  <title>Admin Main Page</title>
+  <title> Books Database </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
@@ -68,7 +68,7 @@
 		#nav li{
 			background:black;
 		}
-		button, #nav a, body a{
+		button, #nav a{
 			color:#fff;
 			text-decoration:none;
 			font-weight:bold;
@@ -78,7 +78,7 @@
 			border:none;
 			padding:10px 15px 10px 15px;
 		}
-		button:hover, body a:hover{
+		button:hover{
 			background:#999;
 		}
 		#nav a:hover{
@@ -152,16 +152,24 @@
 			background:#fff;
 			padding:0 20% 2% 20%;
 		}
-    .link-table{
-      border: solid white;
-    }
-    .table-link-text{
-      border: solid white;
-      padding-bottom: 50px;
-    }
+		.input-table tr {border: solid white 5px}
+    .input-table-form {border: 5px solid white}
+    .input-table table {border: solid black 2px}
+    .input-table td {border: solid white 2px}
+    
+    .button-table {}
+    .button-table td {border: solid white 5px; background: white;}
+    
+    .book-information-box {border: solid white 5px; padding: 10px; background: white; height: 19px}
+    
+    .body {border: solid white 5px;}
+    
+    .div-book-table {padding: 5px;}
+    .book-table table {border: solid white 5px; background:white; padding: 20px}
+    .book-table th {border: solid black 1px; background:white; width: 150px}
+    .book-table td {border: solid black 1px; background:white;height: 19px}
     </style>
 </head>
-
 <body>
   <div id="nav">
     <div align="center"><span class="book">BOOK</span>
@@ -174,7 +182,7 @@
             </li> 
             <div class="drop">
               <li><a href="./adminMainPage.htm">main page</a></li>
-              <li><a href="http://172.19.50.140/web/">sign out</a></li>
+              <li><a href="">sign out</a></li>
             </div>
           </div>
         </ul>
@@ -183,41 +191,73 @@
   </div>
   <div class="filler"></div>
 	<div id="container" align="center">
-	  <h1>Admin Main Page</h1>
+	  <h1>Book Database</h1>
   </div>
-  <table class="link-table" border="black solid 2px">
+  <table class="input-table" id="input-table">
     <tr>
-      <td class="table-link-text"><a href="manageBooks.htm">Manage books</button></td>
+      <td class="input-table-form"><b>Name:</b></td>
+      <td><input id="Title" placeholder="Enter Name"></td>
+      <td class="input-table-form"><b>email:</b></td>
+      <td><input id="Publisher" placeholder="Enter Email"></td>
     </tr>
     <tr>
-      <td class="table-link-text"><a href="manageUsers.htm">Manage users</a></td>
+      <td class="input-table-form"><b>Username:</b></td>
+      <td><input id="ISBN" placeholder="Enter Username"></td>
+      <td class="input-table-form"><b>Password:</b></td>
+      <td><input id="Genre" placeholder="Enter Password"></td>
     </tr>
     <tr>
-      <td class="table-link-text"><button onclick="">Manage orders</button></td>
+      <td class="input-table-form"><b>Birthdate:</b></td>
+      <td><input id="Author" placeholder="Enter Birthdate"></td>
+      <td class="input-table-form"><b>Address:</b></td>
+      <td><input id="Stock" placeholder="Enter Address"></td>
     </tr>
     <tr>
-      <td class="table-link-text"><button onclick="">Manage promotions</button></td>
-    </tr>
-    <tr>
-      <td class="table-link-text"><button onclick="visitOwner()">Manage reports</button></td>
+      <td class="input-table-form"><b>Account Type</b></td>
+      <td><input id="Vendor" placeholder="Enter Account Type"></td>
     </tr>
   </table>
+  <table class="button-table" id="button-table">
+    <tr>
+      <td> <button onclick="addBook()"> Add Book </button> </td>
+      <td> <button onclick="deleteBook()"> Delete Book </button> </td>
+      <td> <button onclick="selectBook()"> Select Book </button> </td>
+      <td> <button onclick="updateBook()"> Update Book </button> </td>
+      <td> <button onclick="addRndBooks()"> Add Random Book </button> </td>
+    </tr>
+  </table>
+  <div class="book-information-box" id="changeMe">Book Information</div>
+  <div class="div-book-table">
+    <table aria-describedby="summary">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birthdate</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Account Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          % for account in accountss:
+          <tr>
+            <td>${account['name']}</td>
+            <td>${account['email']}</td>
+            <td>${account['birthdate']}</td>
+            <td>${account['username']}</td>
+            <td>${account['password']}</td>
+            <td>${account['acct_type']}</td>
+          </tr>
+          % endfor
+        </tbody>
+      </table>
+    <table class="book-table" id="book-table">
+      
+    </table>
+  </div>
 </body>
 <foot>
-  <script src="./main.js" defer></script>
-  <script>
-    function visitAdmin(){
-      window.location='./adminMainPage.htm';
-    }
-    function visitBooks(){
-      window.location='./manageBooks.htm';
-    }
-    function visitOwner(){
-      window.location='./ownerMainPage.htm';
-    }
-    function visitEoDSR(){
-      window.location='./endOfDaySalesReport.htm';
-    }
-  </script>
+  <script src="manageBooks.js" defer></script>
 </foot>
 </html>

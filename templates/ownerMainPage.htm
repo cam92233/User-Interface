@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Main Page</title>
+  <title>Owner Main Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
@@ -68,7 +68,7 @@
 		#nav li{
 			background:black;
 		}
-		button, #nav a, body a{
+		button, #nav a{
 			color:#fff;
 			text-decoration:none;
 			font-weight:bold;
@@ -78,7 +78,7 @@
 			border:none;
 			padding:10px 15px 10px 15px;
 		}
-		button:hover, body a:hover{
+		button:hover{
 			background:#999;
 		}
 		#nav a:hover{
@@ -157,11 +157,9 @@
     }
     .table-link-text{
       border: solid white;
-      padding-bottom: 50px;
     }
-    </style>
+  </style>
 </head>
-
 <body>
   <div id="nav">
     <div align="center"><span class="book">BOOK</span>
@@ -173,8 +171,9 @@
               <a href="">account<i class="fa fa-sort-down"></i></a>
             </li> 
             <div class="drop">
-              <li><a href="./adminMainPage.htm">main page</a></li>
-              <li><a href="http://172.19.50.140/web/">sign out</a></li>
+              <li><a href="./ownerMainPage.htm">main page</a></li>
+              <li><a href="">settings</a></li>
+              <li><a href="">sign out</a></li>
             </div>
           </div>
         </ul>
@@ -183,23 +182,23 @@
   </div>
   <div class="filler"></div>
 	<div id="container" align="center">
-	  <h1>Admin Main Page</h1>
+	  <h1>Owner Main Page</h1>
   </div>
   <table class="link-table" border="black solid 2px">
     <tr>
-      <td class="table-link-text"><a href="manageBooks.htm">Manage books</button></td>
+      <td class="table-link-text"><button onclick="visitEoDSR()"> End of day sales report </button></td>
     </tr>
     <tr>
-      <td class="table-link-text"><a href="manageUsers.htm">Manage users</a></td>
+      <td class="table-link-text"><button onclick=""> Itemized end of day sales report </button></td>
     </tr>
     <tr>
-      <td class="table-link-text"><button onclick="">Manage orders</button></td>
+      <td class="table-link-text"><button onclick=""> Weekly sales report </button></td>
     </tr>
     <tr>
-      <td class="table-link-text"><button onclick="">Manage promotions</button></td>
+      <td class="table-link-text"><button onclick=""> Monthly sales report </button></td>
     </tr>
     <tr>
-      <td class="table-link-text"><button onclick="visitOwner()">Manage reports</button></td>
+      <td class="table-link-text"><button onclick="visitAdmin()"> Annual sales report </button></td>
     </tr>
   </table>
 </body>

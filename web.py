@@ -1,5 +1,6 @@
 from mako.template import Template
 from contextlib import closing
+from handlers import *
 from pprint import pprint
 import mysql.connector
 import cgi
@@ -13,17 +14,7 @@ mysql_connection_info = {
     'passwd': 'WebProject1!',
     'database': 'web',
     'auth_plugin': 'mysql_native_password'
-}
-def verifyLogin(username,password,mysql_connection):
-    mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("SELECT password, acct_type FROM accounts WHERE username='{}'".format(username))
-    storedPassword = mysql_cursor.fetchall()
-    pprint(storedPassword)
-    if(storedPassword[0].get("password") == password):
-      acctType = storedPassword.get("acct_type")
-      return True
-    return False
-    
+}   
 def registrationCheck(mysql_connection,username):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("SELECT username FROM accounts WHERE username='{}'".format(username))
@@ -43,20 +34,12 @@ def registerUser(mysql_connection,name,email,address,birthdate,username,password
       mysql_cursor = mysql_connection.cursor(dictionary = True)
       mysql_cursor.execute("INSERT INTO accounts (name,email,birthdate,username,password,acct_type) values('{}','{}','{}','{}','{}','{}')".format(name,email,birthdate,username,password,"customer"))
       mysql_connection.commit()
-      pprint("Yeet")  
-      
       
 def updateBook(mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("UPDATE books SET price=price-1.0 WHERE title='Test Title'")
     mysql_connection.commit()
     pprint("UpdateBook")   
-
-def searchHandler(mysql_connection,field,search):
-    mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("SELECT * FROM books WHERE {}='{}'".format(field,search))
-    presidents = mysql_cursor.fetchall()
-    return presidents
 
 def query_presidents(mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
@@ -67,7 +50,7 @@ def query_presidents(mysql_connection):
 def updateBookStock(isbn,mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("UPDATE books SET amount = amount - 1 WHERE title='Test Title';")
-
+          
 def application(env, start_response):
     mysql_connection = mysql.connector.connect(**mysql_connection_info)
     start_response('200 OK', [('Content-Type', 'text/html')])
@@ -79,7 +62,6 @@ def application(env, start_response):
         action = action[0]
         action = int(action)
       if(action == 1):
-        pprint("made one")
         updateBook(mysql_connection)
         html_template = Template(filename = 'templates/home.html')
         html_dict = {
@@ -121,19 +103,10 @@ def application(env, start_response):
       content_length = int(env.get('CONTENT_LENGTH', 0))
       post_data = env['wsgi.input'].read(content_length)
       qs = parse_qs(post_data)
-      pprint(qs)
-      if(len(qs) < 5):
+      if(len(qs) == 2):
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')
-        if(verifyLogin(username,password,mysql_connection)):
-          html_template = Template(filename = 'templates/home.html')
-          html_dict = {
-           'presidents': query_presidents(mysql_connection),
-           'username': username
-          } # html_dict
-          response = html_template.render(**html_dict)
-          mysql_connection.close()
-          return response.encode()  
+        return loginHandler(username,password,mysql_connection)
       else:
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')
