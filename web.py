@@ -20,16 +20,32 @@ def verifyLogin(username,password,mysql_connection):
     storedPassword = mysql_cursor.fetchall()
     pprint(storedPassword)
     if(storedPassword[0].get("password") == password):
-      acctType = storedPassword[0].get("acct_type")
+      acctType = storedPassword.get("acct_type")
       return True
     return False
-  
+    
+def registrationCheck(mysql_connection,username):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("SELECT username FROM accounts WHERE username='{}'".format(username))
+    storedPassword = mysql_cursor.fetchall()
+    if(len(storedPassword)==0):
+      return True
+    return False
+    
 def getBookInfo(title,mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("SELECT * FROM books WHERE isbn='{}'".format(title))
     bookInfo = mysql_cursor.fetchall()
     return bookInfo
     
+def registerUser(mysql_connection,name,email,address,birthdate,username,password):
+    if(registrationCheck(mysql_connection,username)):
+      mysql_cursor = mysql_connection.cursor(dictionary = True)
+      mysql_cursor.execute("INSERT INTO accounts (name,email,birthdate,username,password,acct_type) values('{}','{}','{}','{}','{}','{}')".format(name,email,birthdate,username,password,"customer"))
+      mysql_connection.commit()
+      pprint("Yeet")  
+      
+      
 def updateBook(mysql_connection):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("UPDATE books SET price=price-1.0 WHERE title='Test Title'")
@@ -57,13 +73,11 @@ def application(env, start_response):
     start_response('200 OK', [('Content-Type', 'text/html')])
     username = "Account"
     qs = parse_qs(env['QUERY_STRING'])
-    
-    updateBookStock(9999999, mysql_connection)
-    
     if len(qs) > 0:
-      action = qs.get("update")
-      action = action[0]
-      action = int(action)
+      action = qs.get("update",0)
+      if(action !=0):
+        action = action[0]
+        action = int(action)
       if(action == 1):
         pprint("made one")
         updateBook(mysql_connection)
@@ -108,7 +122,7 @@ def application(env, start_response):
       post_data = env['wsgi.input'].read(content_length)
       qs = parse_qs(post_data)
       pprint(qs)
-      len(qs < 5)
+      if(len(qs) < 5):
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')
         if(verifyLogin(username,password,mysql_connection)):
@@ -120,8 +134,14 @@ def application(env, start_response):
           response = html_template.render(**html_dict)
           mysql_connection.close()
           return response.encode()  
-
-    pprint(env)
+      else:
+        username = qs.get("username".encode(),"")[0].decode('ASCII')
+        password = qs.get("password".encode(),"")[0].decode('ASCII')
+        email = qs.get("email".encode(),"")[0].decode('ASCII')
+        name = qs.get("name".encode(),"")[0].decode('ASCII')
+        address = qs.get("address".encode(),"")[0].decode('ASCII')
+        birthdate = qs.get("birthdate".encode(),"")[0].decode('ASCII')
+        registerUser(mysql_connection,name,email,address,birthdate,username,password)
     html_template = Template(filename = 'templates/home.html')
     username = "Account"
     html_dict = {
