@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Presidents Test Page</title>
+  </head>
+  <body>
+    <h1>Presidents Test Page</h1>
+    <table aria-describedby="summary">
+      <caption>Some US Presidents</caption>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Date of Birth</th>
+        </tr>
+      </thead>
+      <tbody>
+        % for president in presidents:
+        <tr>
+          <td>${president['id']}</td>
+          <td>${president['name']}</td>
+          <td>${president['birth']}</td>
+        </tr>
+        % endfor
+      </tbody>
+    </table>
+  </body>
+</html>

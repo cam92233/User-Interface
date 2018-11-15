@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class = html>
+<head>
+  <title> Account Database </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel = "stylesheet" href = "manageBooks.css">
+</head>
+<body>
+ 
+  
+<div id = nav>
+ <span class="book">BOOK</span>
+ <span class="worm">Worm</span>
+ <span class = "book"><img src ="https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></span>
+ <div class = "menu">
+        <ul>
+      <div class="top">
+        <li><a href="profile.html" id="acct">Account <i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="./adminMainPage.htm">Main Page</a></li>
+          <li><a href="static/Login.htm" id="sign-out" onclick="logout('username')">Sign Out</a></li>
+        </div>
+      </div>
+    </ul>
+ </div>
+</div>
+  
+<h1>Account Database</h1>
+  
+  <div class = box align = center>
+        <table class="input-table" id="input-table">
+          <tr>
+            <td class="input-table-form"><b>Name:</b></td>
+            <td><input type="text" name="name"id="Title" placeholder="Enter Name"></td>
+            <td class="input-table-form"><b>email:</b></td>
+            <td><input type="text" name="email" id="Publisher" placeholder="Enter Email"></td>
+          </tr>
+          <tr>
+            <td class="input-table-form"><b>Username:</b></td>
+            <td><input type="text" name="username"id="username" placeholder="Enter Username"></td>
+            <td class="input-table-form"><b>Password:</b></td>
+            <td><input type="text" name="password"id="password" placeholder="Enter Password"></td>
+          </tr>
+          <tr>
+            <td class="input-table-form"><b>Birthdate:</b></td>
+            <td><input type="text" name="birthdate"id="birthdate" placeholder="Enter Birthdate"></td>
+            <td class="input-table-form"><b>Address:</b></td>
+            <td><input type="text" name="address"id="address" placeholder="Enter Address"></td>
+          </tr>
+          <tr>
+            <td class="input-table-form"><b>Account Type:</b></td>
+            <td><input type="text" name="acct_type" id="acct_type" placeholder="Enter Account Type"></td>
+          </tr>
+        </table>
+        <br>
+        <button onclick="addBook()"> Add Account </button>
+        <button onclick="deleteBook()"> Delete Account </button> 
+        <button onclick="updateBook()"> Update Account </button>
+    </div>
+    
+<br>
+<div>
+    <table class="book-table">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birthdate</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Account Type</th>
+          </tr>
+          <tr>
+            <td>${account['name']}</td>
+            <td>${account['email']}</td>
+            <td>${account['birthdate']}</td>
+            <td>${account['username']}</td>
+            <td>${account['password']}</td>
+            <td>${account['acct_type']}</td>
+          </tr> 
+      </table>
+</div>
+    
+</body>
+</html>

@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-<style>
-    hr{
+ <style type="text/css">
+	body{
+	font-family:helvetica;
+	font-size:0.9em;
+	padding:0px;
+	margin:0px;
+	height:100%;
+}
+h1{
+	text-transform:uppercase;
+	color:#505050;
+	text-align:right;
+	font-weight:100;
+	letter-spacing:1px;
+	line-height:normal;
+	font-size:2.5em;
+	font-family:monospace;
+	padding-right:10px;
+	border-bottom:1px #bfbfbf solid;
+}
+
+hr{
 	border:1px #bfbfbf solid;
 	border-top:none;
 }
+
 .book{
-		vertical-align:top;
+	vertical-align:middle;
 	font-size:2.5em;
 	font-weight:bold;
-color:black;text-decoration:none;padding:5px;}
+	color:black;
+	text-decoration:none;
+	padding:5px;
+}
 .worm{
 	display:inline-block;
 	vertical-align:middle;
@@ -22,6 +45,7 @@ color:black;text-decoration:none;padding:5px;}
 	background:#fff;
 	top:0px;
 }
+
 #nav{
 	position:fixed;
 	top:0px;
@@ -36,6 +60,7 @@ color:black;text-decoration:none;padding:5px;}
 	font-family:helvetica;
 	border-bottom:1px #999 solid;
 }
+
 #nav ul{
 	list-style-type:none;
 	display:inline;
@@ -54,34 +79,44 @@ button, .menu a{
 	border:none;
 	padding:10px 15px 10px 15px;
 }
+
 button:hover{
 	background:#999;
 }
+
 #nav a:hover{
 	background:#fff;
 	color:#999;
 }
+
 .top{
 	display:inline-block;
 }
+
 .top li{
 	display:inline-block;
 	text-align:center;
 }
+
 .top a{
 	display:inline-block;
 	width:90px;
 }
+
 .drop{
 	display:none;
 	position:absolute;
+
 }
+
 .drop li{
 	display:block;
 }
+
 .top:hover .drop{
 	display:block;
 }
+
 .search{
 	display:inline;
 	float:left;
@@ -115,72 +150,103 @@ button:hover{
 	font-weight:bold;
 	font-size:13px;
 }
+
 .menu{
 	float:right;
 	margin-right:3%;
 }
+
 .filler{
 	padding-top:6%;
 	background:#fff;
 }
 
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: lightgrey;
-    font-size:0.9em;
-	padding:0px;
-	margin:0px;
+#container{
+	overflow:auto;
 	height:100%;
-}
-    
-h1 {
-    display:inline; 
-    color: #353837;
-}
-    
-h2 {
-    display:inline;
-}
-    
-h4 {
-    display:inline;
-}
-table {
-    padding-top: 10px;
-    border-collapse: collapse; 
-    margin-left: 150px
-}
-td {
-    background: white;
+	background:#fff;
+	padding:0 20% 2% 20%;
 }
 
-table, td {
-    border: 20px solid lightgrey
-}
-.price {
-    text-align: right;
+.items{
+	border: solid #fff 20px;
+	background:#fff;
+	border-spacing:1px;
+	border-radius:10px;	
+	text-align:center;
 }
 
+.items th{
+	font-size:1.3em;
+	text-transform:uppercase;
+	align:left;
+	padding:7px;
+	letter-spacing:1px;
+    	font-family: monospace;
+	font-weight:100;
+}
+
+.items td{
+	padding:7px;
+}
+
+.items button{
+	padding: 3px;
+}
+
+.items tr:nth-child(even){
+	background:#efefef;
+}
+
+.items th:nth-child(2){
+	width:40%;
+}
+
+.imgr{
+	width:20%;
+}
+
+.tbimg{
+	width:auto;
+	max-height:30%;
+}
+
+.ship{
+	text-align:right;
+}
+
+.ship table{
+	display:inline;
+}
+.ship th, .ship td{
+	padding:3px;
+}
+
+.ship select{
+	padding:3px;
+}
 </style>
- <link rel="stylesheet" href="css/check.css" type="text/css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+<title>View Cart</title>
+<link rel="stylesheet" href="css/check.css" type="text/css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 
 
-
+</head>
+<body>
 
     <div id="nav">
         <a href="/" class="book">BOOKWORM</a>
 		<div class="search">
-			<form class="rad">
-	    		<input type="radio" name="cat" checked="checked"></input> ISBN 
-				<input type="radio" name="cat"></input> Title 
-				<input type="radio" name="cat"></input> Author
-				<input type="radio" name="cat"></input> Subject
-			</form>
-			<input type="text" class="searchbar"  placeholder="Search..."></input><button type="submit" class="searchbtn"><i class="fa fa-search"></i></button> 
+			<form class="rad" action="/search" method="post">
+	    		<input type="radio" name="cat" value="isbn" checked="checked"></input> ISBN 
+				<input type="radio" name="cat" value="title"></input> Title 
+				<input type="radio" name="cat" value="author"></input> Author
+				<input type="radio" name="cat" value="subject"></input> Subject
+			
+			<input type="text" class="searchbar"  name="search" placeholder="Search..."></input><button type="submit" class="searchbtn"><i class="fa fa-search"></i></button> </form>
 		</div>
 		<div class="menu">
 			<a href="/cart">cart (${count}) <i class="fa fa-shopping-cart"></i></a>
