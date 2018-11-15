@@ -10,14 +10,14 @@ app = Flask(__name__)
 
 @app.route('/',methods=['GET'])
 def bookview():
+    p = bh.handle_book('home','')
     if request.cookies.get('username') != None:
-        template = Template(filename=r'D:\bookworm\templates\home.htm')
-        p = bh.handle_book('home','')
+        template = Template(filename=r'D:\bookworm\templates\index.htm')
         resp = make_response(template.render(presidents=p,user=request.cookies.get('username'),count=request.cookies.get('count')))
         #if the request has cookies will load this
     else:
-        template = Template(filename=r'D:\bookworm\static\index.html')
-        resp = make_response(template.render())
+        template = Template(filename=r'D:\bookworm\templates\indexg.htm')
+        resp = make_response(template.render(presidents=p))
     return resp
 
 @app.route('/register', methods=['GET','POST'])
@@ -34,21 +34,18 @@ def register():
 @app.route('/login', methods=['GET','POST'])
 def login():
     valid = handle_acc('login',request.form.copy())
-    #valid = True
     if(request.method == 'POST'):
         if valid:
+            type = handle_acc('type',request.form.copy())
             template = Template(filename = r'D:\bookworm\templates\index.htm')
-            #resp = make_response(template.render(user=request.form['user']))
-            #resp = make_response(template.render())
-            #resp = request.form['user']
             resp = redirect("/",code=302)
             resp.set_cookie('username',request.form['user'])
             num = ch.handle_cart('count',request.form['user'])
             resp.set_cookie('count',str(num))
+            return resp
         else:
-            resp = redirect("static/loginerr.htm")
-        return resp
-        #load home page template 
+            return redirect("static/loginerr.htm")
+            
     else:
         return redirect("localhost/static/login.htm")
 
@@ -66,8 +63,9 @@ def viewcart():
         data['user'] = request.cookies.get('username')
         ch.handle_cart('quantity',data)
         resp = redirect("/cart")
-        resp.set_cookie('count',str(data['qty']))#update count cookie if they entirely remove item from cart
-       # resp = make_response("HELLO????")
+        num = ch.handle_cart('count',request.cookies.get('username'))
+        resp.set_cookie('count',str(num))
+        #resp.set_cookie('count',str(data['qty']))#update count cookie if they entirely remove item from cart
     else:
         if int(request.cookies.get('count')) != 0:
             item,sub = ch.handle_cart('view',request.cookies.get('username'))
@@ -89,24 +87,32 @@ def search():
         resp = make_response(template.render(items=dictlist,acct_name=request.cookies.get('username')))
     return resp
 
-@app.route('/b/')
-def selBook():
-    isbn = request.args.get('book')
-    info = bh.handle_book('view',isbn)
+@app.route('/profile',methods=['GET','POST']}
+def profile():
+    template = Template(r'D:\bookworm\templates\profile.htm')
+    info = handle_acc('profile',request.cookies.get('username'))
+    #reso - make_response(template.render(
 
-    if request.cookies.get('username') != None:
+
+@app.route('/b/',methods=['GET','POST'])
+def selBook():
+    if request.method == 'POST':
+        data = request.form.copy()
+        data['user'] = request.cookies.get('username')
+        ch.handle_cart('add',data) 
+        resp = redirect("/cart")
+        resp.set_cookie('count',str(int(request.cookies.get('count'))+1))
+    else:
+        isbn = request.args.get('book')
+        info = bh.handle_book('view',isbn)
+
+        if request.cookies.get('username') != None:
             template = Template(filename=r'D:\bookworm\templates\book.htm')
             resp = make_response(template.render(details=info[0],count=request.cookies.get('count')))
         #if the request has cookies will load this
-    else:
-        y=2
-        #template = Template(filename=r'D:\bookworm\templates\index.html')
-        #resp = make_response(template.render())
-    #isbn = request.args.get('book')
-    #resp = make_response(isbn)
-    #info = bh.handle_book('view',isbn)
-    #template = Template(filename=r'D:\bookworm\templates\book.htm')
-    #resp = make_response(template.render(details=info[0],count=request.cookies.get('count'))
+        else:
+            template = Template(filename=r'D:\bookworm\templates\bookg.htm')
+            resp = make_response(template.render(details=info[0]))
     return resp
 
 if __name__ == '__main__':

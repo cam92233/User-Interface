@@ -17,6 +17,9 @@ def login(creds):
     else:
         return True
 #returns true or false depending on if user credentials are found in database
+    
+def verify_type(creds): 
+    return db.select('SELECT acct_type FROM accounts WHERE username=\''+creds['user']+'\'')[0][0]['acct_type']
 
 def give_perm(user,level):
     query = 'update accounts set acct_type = \''+level+'\' where username = \'' + user + '\''
@@ -34,4 +37,6 @@ def update_user(data): #contains dict of all user attributes?
     #a dict with only the attributes to be changed, then get the keys for the dict in a list and iterate thru tht in the update statement
     #i guess
 
+def get_info(data):
+    query = 'select * from accounts where username=\'' + data 
 #if promos are one time use for user maybe there should be something here...

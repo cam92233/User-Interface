@@ -7,3 +7,8 @@ def handle_book(case,data):
         return bp.getBook(data)
     elif case == 'home':
         return bp.getAll()
+
+
+res = handle_book('home','')
+for i in res:
+    print(i)

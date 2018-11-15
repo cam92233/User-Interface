@@ -16,7 +16,7 @@ def addItem(user,isbn): #or just send both in dict or list
 
 def updateItem(user,isbn,qty): #update quantity of items
     #accessed from viewcart page
-    if qty != 0:
+    if int(qty) != 0:
         query = 'update cart set qty =' + qty + ' where cust_id =\'' + user + '\' and isbn=\'' + isbn + '\''
     else: #if customer set quantity to zero, just remove from cart
         query = 'delete from cart where cust_id =\'' + user + '\' and isbn=\'' + isbn + '\''

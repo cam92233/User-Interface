@@ -11,3 +11,5 @@ def handle_cart(case,data):
         return books,subtotal
     if case == 'quantity':
         cp.updateItem(data['user'],data['isbn'],data['qty'])
+    if case == 'add':
+        cp.addItem(data['user'],data['isbn'])
