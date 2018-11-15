@@ -256,6 +256,9 @@ button:hover{
 #check{
 	display:none;
 }
+#cash{
+    display:none;    
+}
 </style>
 
 <script>
@@ -265,11 +268,18 @@ function showPayment(){
 	if(x == "Card"){
 		document.getElementById("check").style.display="none";
 		document.getElementById("card").style.display="block";
+        document.getElementById("cash").style.display="none";
 	}
 	if(x == "E-Check"){
 		document.getElementById("check").style.display="block";
 		document.getElementById("card").style.display="none";
+        document.getElementById("cash").style.display="none";
 	}
+    if(x == "Cash") {
+        document.getElementById("check").style.display="none";
+		document.getElementById("card").style.display="none";
+        document.getElementById("cash").style.display="block";
+    }
 	
 	
 }
@@ -317,23 +327,30 @@ function showPayment(){
 
 <b>Method of payment:</b> <select id="sel" onchange="showPayment()">
 <option>Card</option>
-<option>E-Check</option></select>
+<option>E-Check</option>
+<option>Cash</option></select>
 <div id="card"><form>
 <fieldset>
 <legend>Billing and Card</legend>
 <b>Address Line 1:</b> <input type="text" value="690 Blah Avenue"/><br/>
 <b>Address Line 2:</b> <input type="text"/><br/>
-<b>City:</b> <input type="text" size="4" value="Athens"/> <b>State:</b> <input type="text" size="1" value="GA"></input> <b>Zipcode:</b> <input type="text" size="3" value="30605"/><br/>
-<b>Card No.:</b> <input type="text" value="5555555555555555"></input> <b>CVV:</b> <input type="text" value="555"/>
+<b>City:</b> <input type="text" size="4" value="Athens"/> <b>State:</b> <input type="text" size="1" value="GA"> <b>Zipcode:</b> <input type="text" size="3" value="30605"/><br/>
+<b>Card No.:</b> <input type="text" value="5555555555555555"> <b>CVV:</b> <input type="text" value="555"/>
 </fieldset>
 </form>
 </div>
-<div id="check">
-<form>
+<div id="check"><form>
 <fieldset>
 <legend>E-Check</legend>
 <b>Bank name:</b> <input type="text" value="Bankity Bank"/> <b>Account Type:</b> <select><option>Checking</option><option>Savings</option></select><br/>
-<b>Routing number:</b> <input type="text" size="10" value="1234567890"/> <b>Account Number:</b> <input type="text" size="10" value="1234567890"></input><br/> <b>Name on Account:</b> <input type="text" size="10" value="Foo Bar"/>
+<b>Routing number:</b> <input type="text" size="10" value="1234567890"/> <b>Account Number:</b> <input type="text" size="10" value="1234567890"><br/> <b>Name on Account:</b> <input type="text" size="10" value="Foo Bar"/>
+</fieldset>
+</form>
+</div>
+<div id="cash"><form>
+<fieldset>
+<legend>Cash</legend>
+	<p>You selected cash and this will reserve your book up to 5 days.</p>
 </fieldset>
 </form>
 </div>
