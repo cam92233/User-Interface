@@ -1,0 +1,151 @@
+body{
+			font-family:helvetica;
+			font-size:0.9em;
+			padding:0px;
+			margin:0px;
+			height:100%;
+		}
+		h1{
+			text-transform:uppercase;
+			color:#505050;
+			text-align:right;
+			font-weight:100;
+			letter-spacing:1px;
+			line-height:normal;
+			font-size:2.5em;
+			font-family:monospace;
+			padding-right:10px;
+			border-bottom:1px #bfbfbf solid;
+		}
+		hr{
+			border:1px #bfbfbf solid;
+			border-top:none;
+		}
+		.book{
+			display:inline-block;
+			vertical-align:middle;
+			font-size:2em;
+			font-weight:bold;
+		}
+		.worm{
+			display:inline-block;
+			vertical-align:middle;
+			font-family:georgia;
+			font-style:italic;
+			font-size:2em;
+			padding:3px;
+			background:#fff;
+			top:0px;
+		}
+		#nav{
+			position:fixed;
+			top:0px;
+			left:0px;
+			padding:10px;
+			width:100%;
+			height:6%;
+			z-index:1;
+			background:#dfdfdf;
+			overflow:none;
+			font-size:0.9em;
+			font-family:helvetica;
+			border-bottom:1px #999 solid;
+		}
+		#nav ul{
+			list-style-type:none;
+			display:inline;
+			padding:0px;
+		}
+		#nav li{
+			background:black;
+		}
+		button, #nav a{
+			color:#fff;
+			text-decoration:none;
+			font-weight:bold;
+			letter-spacing:1px;
+			font-variant:small-caps;
+			background:black;
+			border:none;
+			padding:10px 15px 10px 15px;
+		}
+		button:hover{
+			background:#999;
+		}
+		#nav a:hover{
+			background:#fff;
+			color:#999;
+		}
+		.top{
+			display:inline-block;
+		}
+		.top li{
+			display:inline-block;
+			text-align:center;
+		}
+		.top a{
+			display:inline-block;
+			width:90px;
+		}
+		.drop{
+			display:none;
+			position:absolute;
+		}
+		.drop li{
+			display:block;
+		}
+		.top:hover .drop{
+			display:block;
+		}
+		.search{
+			display:inline;
+			float:left;
+			margin-top:0.2%;
+			width:50%;
+		}
+		.rad{
+			display:inline;
+			background:#000;
+			color:#FFF;
+			font-size:1em;
+			font-weight:bold;
+			padding:8px 5px 8px 5px;
+		}
+		.searchbtn{
+			padding:8px;
+			border:none;
+			background: #000;	
+			margin:0px;
+		}
+		.searchbtn:hover{
+			background:#999;
+		}
+		.fa-search{
+			color:white;
+		}
+		.searchbar{
+			width:40%;
+			padding: 6px;
+			font-weight:bold;
+			font-size:13px;
+		}
+		.menu{
+			float:right;
+			margin-right:3%;
+		}
+		.filler{
+			padding-top:6%;
+			background:#fff;
+		}
+		#container{
+			overflow:auto;
+			height:100%;
+			background:#fff;
+			padding:0 20% 2% 20%;
+		}
+		.links{
+			overflow:auto;
+			height:100%;
+			background:#fff;
+			padding:0 20% 2% 20%;
+		}
