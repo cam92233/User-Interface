@@ -1,6 +1,6 @@
 import DB_access as db
 
-def num_items(user): #used to set number in cookie to show beside the cart link in nav bar
+def getNumItems(user): #used to set number in cookie to show beside the cart link in nav bar
     query = 'select count(cust_id) from cart where cust_id=\''+user+'\' group by cust_id'
     inf = db.select(query)
     if inf[1] != 0: #check if any tuples were returned
@@ -9,12 +9,12 @@ def num_items(user): #used to set number in cookie to show beside the cart link 
         return 0 #if no items in cart
 #returns number of items in cart
 
-def add_item(user,isbn): #or just send both in dict or list
+def addItem(user,isbn): #or just send both in dict or list
     #if first time putting item in cart
     query =  'insert into cart(cust_id,isbn,qty) values (\'' + user + '\',\'' + isbn + '\',1)'
     db.update(query)
 
-def update_item(user,isbn,qty): #update quantity of items
+def updateItem(user,isbn,qty): #update quantity of items
     #accessed from viewcart page
     if qty != 0:
         query = 'update cart set qty =' + qty + ' where cust_id =\'' + user + '\' and isbn=\'' + isbn + '\''
@@ -22,7 +22,7 @@ def update_item(user,isbn,qty): #update quantity of items
         query = 'delete from cart where cust_id =\'' + user + '\' and isbn=\'' + isbn + '\''
     db.update(query)
 
-def get_items(user):
+def getItems(user):
     query = 'select isbn,qty from cart where cust_id=\''+user+'\''
     isbns = db.select(query)[0]
     info = []

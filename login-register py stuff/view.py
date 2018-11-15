@@ -1,6 +1,7 @@
 from mako.template import Template
 from acc_handler import *
 import cart_handler as ch
+import book_handler as bh
 from flask import request,redirect,make_response
 
 
@@ -10,8 +11,9 @@ app = Flask(__name__)
 @app.route('/',methods=['GET'])
 def bookview():
     if request.cookies.get('username') != None:
-        template = Template(filename=r'D:\bookworm\templates\index.htm')
-        resp = make_response(template.render(user=request.cookies.get('username'),count=request.cookies.get('count')))
+        template = Template(filename=r'D:\bookworm\templates\home.htm')
+        p = bh.handle_book('home','')
+        resp = make_response(template.render(presidents=p,user=request.cookies.get('username'),count=request.cookies.get('count')))
         #if the request has cookies will load this
     else:
         template = Template(filename=r'D:\bookworm\static\index.html')
@@ -62,10 +64,10 @@ def viewcart():
         #if they change quantity in cart
         data = request.form.copy()
         data['user'] = request.cookies.get('username')
-        data['count'] = request.cookies.get('count')
-        cnt = ch.handle_cart('quantity',data)
+        ch.handle_cart('quantity',data)
         resp = redirect("/cart")
-        resp.set_cookie('count',str(cnt))#update count cookie if they entirely remove item from cart
+        resp.set_cookie('count',str(data['qty']))#update count cookie if they entirely remove item from cart
+       # resp = make_response("HELLO????")
     else:
         if int(request.cookies.get('count')) != 0:
             item,sub = ch.handle_cart('view',request.cookies.get('username'))
@@ -76,10 +78,39 @@ def viewcart():
             resp = redirect("static/cartproto.htm")
         #if no items in cart
         #display message 'No items in cart' or smt
-        return resp
+    return resp
+
+@app.route('/search',methods=['GET','POST'])
+def search():
+    if request.method == 'POST':
+        dictlist = bh.handle_book('search',request.form.copy())
+        resp = ''
+        template = Template(filename=r'D:\bookworm\templates\search.htm')
+        resp = make_response(template.render(items=dictlist,acct_name=request.cookies.get('username')))
+    return resp
+
+@app.route('/b/')
+def selBook():
+    isbn = request.args.get('book')
+    info = bh.handle_book('view',isbn)
+
+    if request.cookies.get('username') != None:
+            template = Template(filename=r'D:\bookworm\templates\book.htm')
+            resp = make_response(template.render(details=info[0],count=request.cookies.get('count')))
+        #if the request has cookies will load this
+    else:
+        y=2
+        #template = Template(filename=r'D:\bookworm\templates\index.html')
+        #resp = make_response(template.render())
+    #isbn = request.args.get('book')
+    #resp = make_response(isbn)
+    #info = bh.handle_book('view',isbn)
+    #template = Template(filename=r'D:\bookworm\templates\book.htm')
+    #resp = make_response(template.render(details=info[0],count=request.cookies.get('count'))
+    return resp
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
 
 
 
