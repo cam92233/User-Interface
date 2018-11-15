@@ -1,6 +1,50 @@
 <!DOCTYPE html>
-<head>
-<style type="text/css">
+<html>
+  <head>
+    <title>Home</title>
+    
+    <style>
+      .filler{
+        padding-top:6%;
+        background:#fff;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: lightgrey;
+        font-size:0.9em;
+        padding:0px;
+        margin:0px;
+        height:100%;
+      }
+        
+      table {
+        padding-top: 10px;
+        border-collapse: collapse; 
+        margin-left: 150px
+      }
+      td {
+        background: white;
+      }
+      
+      table, td {
+        border: 20px solid lightgrey
+      }
+      .price {
+        text-align: right;
+      }
+  
+
+.img-container {
+    float: left;
+    width: 19%;
+    padding: 5px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 	body{
 	font-family:helvetica;
 	font-size:0.9em;
@@ -224,63 +268,56 @@ button:hover{
 .ship select{
 	padding:3px;
 }
-</style>
-<title>View Cart</title>
-<link rel="stylesheet" href="css/check.css" type="text/css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    </style>
+    <link rel="stylesheet" href="check.css" type="text/css"/>
+    <link rel="stylesheet" href="D:/bookworm/static/style.css"/>
+	<link rel="stylesheet" href="nav.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+  </head>
 <body>
-   <div id="nav">
-        <a href="/" class="book">BOOKWORM</a>
-		<div class="search">
-			<form class="rad" action="/search" method="post">
-	    		<input type="radio" name="cat" value="isbn" checked="checked"></input> ISBN 
-				<input type="radio" name="cat" value="title"></input> Title 
-				<input type="radio" name="cat" value="author"></input> Author
-				<input type="radio" name="cat" value="subject"></input> Subject
-			
-			<input type="text" class="searchbar"  name="search" placeholder="Search..."></input><button type="submit" class="searchbtn"><i class="fa fa-search"></i></button> </form>
-		</div>
-		<div class="menu">
-			<a href="/cart">cart (${count}) <i class="fa fa-shopping-cart"></i></a>
-			<a href="/checkout">checkout</a>
-		<ul>
-			<div class="top">
-				<li><a href="/profile">account <i class="fa fa-sort-down"></i></a></li> 
-				<div class="drop">
-					<li><a href="">settings</a></li>
-					<li><a href="/signout">sign out</a></li>
-				</div>
-			</div>
-		</ul>
-		</div>
-	</div>
-<div class="filler"></div>
 
-<div id="container" align="center">
-<h1>Cart</h1>
-
-<table class="items">
-<tr>
-<th name="img"></th>
-<th>Item</th>
-<th>Qty</th>
-<th>Price</th>
-<th>Total</th>
-
-</tr>
-% for item in items:
-<tr>
-<td><img src="${item['pic_url']}" class="tbimg"/></td> <td>${item['title']}<br/><sup>${item['author']}</sup></td><td>
-<form action="" method="post"><input type="hidden" name="isbn" value="${item['isbn']}"/><input type="text" name="qty" value="${item['qty']}" size="1"/><button type="submit"><i class="fa fa-check"></i></button></form></td><td>${item['price']}</td><td>${item['total']}</td>
-</tr>
-%endfor
-</table><br/>
-<table>
-<tr><td><b>Subtotal:</b></td><td> ${subtotal}</td></tr>
-</table><hr/>
-
-<a href="/"><button>Continue Browsing</button></a> | <a href="/checkout"><button>Check out >></button></a>
+<div id="nav">
+  <span class="book"><a href="/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+  <span class="worm">Worm</span>
+  <div class="search">
+    <form class="rad" action="/search" method="post">
+      <input type="radio" name="cat" value="isbn" checked="checked"></input> ISBN 
+      <input type="radio" name="cat" value="title"></input> Title 
+      <input type="radio" name="cat" value="author"></input> Author
+      <input type="radio" name="cat" value="subject"></input> Subject 
+      <input type="text" required class="searchbar"  name="search" placeholder="Search...">
+      </input>
+      <button type="submit" class="searchbtn" value="Submit">
+      <i class="fa fa-search"></i>
+      </button> 
+    </form>
+  </div>
+  <div class="menu">
+    <a href="/cart">cart <i class="fa fa-shopping-cart"></i></a>
+    <a href="/checkout">checkout</a>
+    <ul>
+      <div class="top">
+        <li><a href="profile.html">${acct_name}<i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="static/index.html">settings</a></li>
+          <li><a href="/signout">sign out</a></li>
+        </div>
+      </div>
+    </ul>
+  </div>
 </div>
+
+<div class="filler"></div>
+  <div class="clearfix">
+  % for item in items:
+    <div class="img-container">
+      <a href="/b/?book=${item['isbn']}">
+      <img src =${item['pic_url']} width ="200" height="300" style="width:100%;max-width:200px"></a><br>${item['title']}<br>${item['author']}<br>
+      <p class = price style="float:left;">${item['price']}</p>
+    </div>
+    % endfor
+</div>
+  
+
 </body>
 </html>

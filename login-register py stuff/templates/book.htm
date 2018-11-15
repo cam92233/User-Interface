@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<head>
-<style type="text/css">
-	body{
+<html>
+    <head>
+<link rel="stylesheet" href="localhost/check.css"/>
+<title>${details['title']}</title>
+
+<style>
+ 	body{
 	font-family:helvetica;
 	font-size:0.9em;
 	padding:0px;
@@ -27,12 +31,10 @@ hr{
 }
 
 .book{
+	display:inline-block;
 	vertical-align:middle;
-	font-size:2.5em;
+	font-size:2em;
 	font-weight:bold;
-	color:black;
-	text-decoration:none;
-	padding:5px;
 }
 .worm{
 	display:inline-block;
@@ -68,7 +70,7 @@ hr{
 #nav li{
 	background:black;
 }
-button, .menu a{
+button, #nav a{
 	color:#fff;
 	text-decoration:none;
 	font-weight:bold;
@@ -198,7 +200,7 @@ button:hover{
 }
 
 .items th:nth-child(2){
-	width:40%;
+	width:50%;
 }
 
 .imgr{
@@ -207,7 +209,7 @@ button:hover{
 
 .tbimg{
 	width:auto;
-	max-height:30%;
+	max-height:70%;
 }
 
 .ship{
@@ -225,12 +227,10 @@ button:hover{
 	padding:3px;
 }
 </style>
-<title>View Cart</title>
-<link rel="stylesheet" href="css/check.css" type="text/css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 </head>
 <body>
-   <div id="nav">
+<div id="nav">
         <a href="/" class="book">BOOKWORM</a>
 		<div class="search">
 			<form class="rad" action="/search" method="post">
@@ -255,32 +255,15 @@ button:hover{
 		</ul>
 		</div>
 	</div>
+
+
 <div class="filler"></div>
-
-<div id="container" align="center">
-<h1>Cart</h1>
-
-<table class="items">
-<tr>
-<th name="img"></th>
-<th>Item</th>
-<th>Qty</th>
-<th>Price</th>
-<th>Total</th>
-
-</tr>
-% for item in items:
-<tr>
-<td><img src="${item['pic_url']}" class="tbimg"/></td> <td>${item['title']}<br/><sup>${item['author']}</sup></td><td>
-<form action="" method="post"><input type="hidden" name="isbn" value="${item['isbn']}"/><input type="text" name="qty" value="${item['qty']}" size="1"/><button type="submit"><i class="fa fa-check"></i></button></form></td><td>${item['price']}</td><td>${item['total']}</td>
-</tr>
-%endfor
-</table><br/>
-<table>
-<tr><td><b>Subtotal:</b></td><td> ${subtotal}</td></tr>
-</table><hr/>
-
-<a href="/"><button>Continue Browsing</button></a> | <a href="/checkout"><button>Check out >></button></a>
+<div id="container" align="justify" style="line-height:16px;">
+<h1>${details['title']}</h1>
+<b>${details['author']}</b><br/>
+<img src="${details['pic_url']}" style="float:left;padding:0 20px 0 0;width:auto;max-height:20%;"/> 
+<b>ISBN:</b> ${details['isbn']} | <b>Left in stock:</b> ${details['amount']} | <b>Subject:</b> ${details['subject']}<hr/><br/>
+${details['detail']}
 </div>
-</body>
-</html>
+ </body>
+</html> 

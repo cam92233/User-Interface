@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    
+    <style>
+      .filler{
+        padding-top:6%;
+        background:#fff;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: lightgrey;
+        font-size:0.9em;
+        padding:0px;
+        margin:0px;
+        height:100%;
+      }
+        
+      table {
+        padding-top: 10px;
+        border-collapse: collapse; 
+        margin-left: 150px
+      }
+      td {
+        background: white;
+      }
+      
+      table, td {
+        border: 20px solid lightgrey
+      }
+      .price {
+        text-align: right;
+      }
+  
+
+.img-container {
+    float: left;
+    width: 19%;
+    padding: 5px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+  </head>
+<body>
+
+<div id="nav">
+  <span class="book"><a href="/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+  <span class="worm">Worm</span>
+  <div class="search">
+    <form class="rad" action="" method="post">
+      <input type="radio" name="cat" value="isbn" checked="checked"></input> ISBN 
+      <input type="radio" name="cat" value="title"></input> Title 
+      <input type="radio" name="cat" value="author"></input> Author
+      <input type="radio" name="cat" value="subject"></input> Subject 
+      <input type="text" required class="searchbar"  name="search" placeholder="Search...">
+      </input>
+      <button type="submit" class="searchbtn" value="Submit">
+      <i class="fa fa-search"></i>
+      </button> 
+    </form>
+  </div>
+  <div class="menu">
+    <a href="/cart">cart (${count})<i class="fa fa-shopping-cart"></i></a>
+    <ul>
+      <div class="top">
+        <li><a href="profile.html" id="acct">${user}<i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="static/index.html">settings</a></li>
+          <li><a href="static/Login.htm" id="Sign-in" onclick="logout('username')">Sign In</a></li>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<div class="filler"></div>
+
+  <div class="clearfix">
+  % for president in presidents:
+    <div class="img-container">
+      <a href=localhost/?book=${president.get("isbn")}>
+      <img src =${president['pic_url']} width ="200" height="300" style="width:100%;max-width:200px"></a><br>${president['title']}<br>${president['author']}<br>
+      <p class = price style="float:left;">${president['price']}</p>
+    </div>
+    % endfor
+</div>
+<a href="?update=1">Changing the price</a>
+
+
+</body>
+</html>
