@@ -8,7 +8,18 @@ mysql_connection_info = {
     'database': 'web',
     'auth_plugin': 'mysql_native_password'
 } 
-
+def showAccounts(mysql_connection):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("SELECT * FROM accounts ORDER BY username")
+    accounts = mysql_cursor.fetchall()
+    return accounts
+    
+def query_presidents(mysql_connection):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("SELECT * FROM books ORDER BY title")
+    presidents = mysql_cursor.fetchall()
+    return presidents
+    
 def searchHandler(mysql_connection,field,search):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("SELECT * FROM books WHERE {}='{}'".format(field,search))
@@ -18,8 +29,7 @@ def searchHandler(mysql_connection,field,search):
 def loginHandler(username,password,mysql_connection):
         response = ""
         if(verifyLoginType(username,password,mysql_connection) == 0):
-          filename = 'templates/home.html'
-          html_template = Template(filename)
+          html_template = Template(filename = 'templates/home.html')
           html_dict = {
            'presidents': query_presidents(mysql_connection),
            'username': username

@@ -6,15 +6,7 @@ import mysql.connector
 import cgi
 import uwsgi
 from cgi import parse_qs, escape
-
-# setup mysql connection information
-mysql_connection_info = {
-    'host': 'localhost',
-    'user': 'web',
-    'passwd': 'WebProject1!',
-    'database': 'web',
-    'auth_plugin': 'mysql_native_password'
-}   
+  
 def registrationCheck(mysql_connection,username):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
     mysql_cursor.execute("SELECT username FROM accounts WHERE username='{}'".format(username))
@@ -28,7 +20,13 @@ def getBookInfo(title,mysql_connection):
     mysql_cursor.execute("SELECT * FROM books WHERE isbn='{}'".format(title))
     bookInfo = mysql_cursor.fetchall()
     return bookInfo
-    
+
+def registerUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type):
+    if(registrationCheck(mysql_connection,username)):
+      mysql_cursor = mysql_connection.cursor(dictionary = True)
+      mysql_cursor.execute("INSERT INTO accounts (name,email,birthdate,username,password,acct_type) values('{}','{}','{}','{}','{}','{}')".format(name,email,birthdate,username,password,acct_type))
+      mysql_connection.commit()
+
 def registerUser(mysql_connection,name,email,address,birthdate,username,password):
     if(registrationCheck(mysql_connection,username)):
       mysql_cursor = mysql_connection.cursor(dictionary = True)
@@ -40,16 +38,6 @@ def updateBook(mysql_connection):
     mysql_cursor.execute("UPDATE books SET price=price-1.0 WHERE title='Test Title'")
     mysql_connection.commit()
     pprint("UpdateBook")   
-
-def query_presidents(mysql_connection):
-    mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("SELECT * FROM books ORDER BY title")
-    presidents = mysql_cursor.fetchall()
-    return presidents
-
-def updateBookStock(isbn,mysql_connection):
-    mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("UPDATE books SET amount = amount - 1 WHERE title='Test Title';")
           
 def application(env, start_response):
     mysql_connection = mysql.connector.connect(**mysql_connection_info)
@@ -57,6 +45,8 @@ def application(env, start_response):
     username = "Account"
     qs = parse_qs(env['QUERY_STRING'])
     if len(qs) > 0:
+      # if(len(qs) == 1)
+      # page = qs.get("page","")
       action = qs.get("update",0)
       if(action !=0):
         action = action[0]
@@ -107,6 +97,22 @@ def application(env, start_response):
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')
         return loginHandler(username,password,mysql_connection)
+      if(len(qs) == 7):
+        username = qs.get("username".encode(),"")[0].decode('ASCII')
+        password = qs.get("password".encode(),"")[0].decode('ASCII')
+        email = qs.get("email".encode(),"")[0].decode('ASCII')
+        name = qs.get("name".encode(),"")[0].decode('ASCII')
+        address = qs.get("address".encode(),"")[0].decode('ASCII')
+        birthdate = qs.get("birthdate".encode(),"")[0].decode('ASCII')
+        acct_type =  qs.get("acct_type".encode(),"")[0].decode('ASCII')
+        registerUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type)
+        html_template = Template(filename = 'static/manageUsers.htm')
+        html_dict = {
+           'accounts': showAccounts(mysql_connection)
+        } # html_dict
+        response = html_template.render(**html_dict)
+        mysql_connection.close()
+        return response.encode()
       else:
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')

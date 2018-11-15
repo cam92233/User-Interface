@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class = html>
 <head>
-  <title> Books Database </title>
+  <title> Account Database </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
@@ -191,41 +191,38 @@
   </div>
   <div class="filler"></div>
 	<div id="container" align="center">
-	  <h1>Book Database</h1>
+	  <h1>Account Database</h1>
   </div>
-  <table class="input-table" id="input-table">
-    <tr>
-      <td class="input-table-form"><b>Name:</b></td>
-      <td><input id="Title" placeholder="Enter Name"></td>
-      <td class="input-table-form"><b>email:</b></td>
-      <td><input id="Publisher" placeholder="Enter Email"></td>
-    </tr>
-    <tr>
-      <td class="input-table-form"><b>Username:</b></td>
-      <td><input id="ISBN" placeholder="Enter Username"></td>
-      <td class="input-table-form"><b>Password:</b></td>
-      <td><input id="Genre" placeholder="Enter Password"></td>
-    </tr>
-    <tr>
-      <td class="input-table-form"><b>Birthdate:</b></td>
-      <td><input id="Author" placeholder="Enter Birthdate"></td>
-      <td class="input-table-form"><b>Address:</b></td>
-      <td><input id="Stock" placeholder="Enter Address"></td>
-    </tr>
-    <tr>
-      <td class="input-table-form"><b>Account Type</b></td>
-      <td><input id="Vendor" placeholder="Enter Account Type"></td>
-    </tr>
-  </table>
-  <table class="button-table" id="button-table">
-    <tr>
-      <td> <button onclick="addBook()"> Add Book </button> </td>
-      <td> <button onclick="deleteBook()"> Delete Book </button> </td>
-      <td> <button onclick="selectBook()"> Select Book </button> </td>
-      <td> <button onclick="updateBook()"> Update Book </button> </td>
-      <td> <button onclick="addRndBooks()"> Add Random Book </button> </td>
-    </tr>
-  </table>
+  <form action="http://172.19.50.140/web/" method="POST">
+    <table class="input-table" id="input-table">
+      <tr>
+        <td class="input-table-form"><b>Name:</b></td>
+        <td><input type="text" name="name"id="Title" placeholder="Enter Name"></td>
+        <td class="input-table-form"><b>email:</b></td>
+        <td><input type="text" name="email" id="Publisher" placeholder="Enter Email"></td>
+      </tr>
+      <tr>
+        <td class="input-table-form"><b>Username:</b></td>
+        <td><input type="text" name="username"id="username" placeholder="Enter Username"></td>
+        <td class="input-table-form"><b>Password:</b></td>
+        <td><input type="text" name="password"id="password" placeholder="Enter Password"></td>
+      </tr>
+      <tr>
+        <td class="input-table-form"><b>Birthdate:</b></td>
+        <td><input type="text" name="birthdate"id="birthdate" placeholder="Enter Birthdate"></td>
+        <td class="input-table-form"><b>Address:</b></td>
+        <td><input type="text" name="address"id="address" placeholder="Enter Address"></td>
+      </tr>
+      <tr>
+        <td class="input-table-form"><b>Account Type</b></td>
+        <td><input type="text" name="acct_type" id="acct_type" placeholder="Enter Account Type"></td>
+      </tr>
+    </table>
+      <input type="radio" name="acct_action" id="acct_type" value="add" placeholder="Enter Account Type">ADD ACCOUNT
+      <input type="radio" name="acct_action" id="acct_type" value="delete"placeholder="Enter Account Type">DELETE ACCOUNT
+      <input type="radio" name="acct_action" id="acct_type" value="update"placeholder="Enter Account Type">UPDATE ACCOUNT
+    <button type = "submit"> Submit </button>
+  </form>
   <div class="book-information-box" id="changeMe">Book Information</div>
   <div class="div-book-table">
     <table aria-describedby="summary">
@@ -240,7 +237,7 @@
           </tr>
         </thead>
         <tbody>
-          % for account in accountss:
+          % for account in accounts:
           <tr>
             <td>${account['name']}</td>
             <td>${account['email']}</td>
