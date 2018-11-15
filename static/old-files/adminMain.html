@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Main Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel = "stylesheet" href = "adminStyle.css">
+</head>
+
+<body>
+ 
+<div id = nav>
+ <span class="book">BOOK</span>
+ <span class="worm">Worm</span>
+ <span class = "book"><img src ="https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></span>
+ <div class = "menu">
+        <ul>
+      <div class="top">
+        <li><a href="profile.html" id="acct">Account <i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="static/Login.htm" id="sign-out" onclick="logout('username')">Sign Out</a></li>
+        </div>
+      </div>
+    </ul>
+ </div>
+</div>
+    
+
+
+<div class = box align = center>
+    <h1>Administrator Management Console</h1>
+    <br>
+    <button>Books</button>
+    <br><br><br>
+    <button>Users</button>
+    <br><br><br>
+    <button >Orders</button>
+    <br><br><br>
+    <button>Promotions</button>
+</div>   
+  
+</body>
+
+</html>

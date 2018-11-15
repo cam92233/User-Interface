@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>   
+<link rel="stylesheet" href="homeStyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+</head>
+
+<body onload= "checkCookie(); loading()">
+
+<div id = "loadWin" class = "modal">
+    <div class = "modal-content">
+    <div align = "center"> <img src = "https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></div>
+    <br><br>
+    <div id = "bar">
+        <div id = "load"></div>
+    </div>
+    </div>
+</div>
+    
+<div id="nav">
+  <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+  <span class="worm">Worm</span>
+  <span class = "book"><img src = "https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></span>
+  <div class="search">
+    <form class="rad" action="" method="GET">
+      <input type="radio" name="radiobutton" value="isbn" checked="checked"> ISBN 
+      <input type="radio" name="radiobutton" value="title"> Title 
+      <input type="radio" name="radiobutton" value="author"> Author
+      <input type="radio" name="radiobutton" value="subject"> Subject 
+      <input type="text" required class="searchbar"  name="search" placeholder="Search...">
+      <button type="submit" class="searchbtn" value="Submit">
+      <i class="fa fa-search"></i>
+      </button> 
+    </form>
+  </div>
+  <div class="menu">
+    <a href="./static/cartproto.htm">cart <i class="fa fa-shopping-cart"></i></a>
+    <a href="checkoutproto.htm">checkout</a>
+    <ul>
+      <div class="top">
+        <li><a href="profile.html" id="acct">Account <i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="static/index.html">settings</a></li>
+          <li><a href="static/Login.htm" id="Sign-in" onclick="logout('username')">Sign In</a></li>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<div class="filler"></div>
+  
+<div class="clearfix">
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9780007382484>
+      <img src =https://books.google.com/books/content/images/frontcover/sK4x05-Mk8wC?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>Alice's Adventures in Wonderland<br>Lewis Carroll<br>
+      <p class = price style="float:left;">$7.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781612130293>
+      <img src =https://books.google.com/books/content/images/frontcover/qDP6NmRAPzsC?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>Fifty Shades of Grey<br>E. L. James<br>
+      <p class = price style="float:left;">$5.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781501141232>
+      <img src =https://books.google.com/books/content/images/frontcover/-rUACwAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>It<br>Stephen King<br>
+      <p class = price style="float:left;">$9.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781504041195>
+      <img src =https://books.google.com/books/content/images/frontcover/lv0lDQAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>Moby Dick<br>Herman Melville<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9780307887443>
+      <img src =https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Ready_Player_One_cover.jpg/220px-Ready_Player_One_cover.jpg width ="200" height="300" style="width:100%;max-width:200px"></a><br>Ready Player One<br>Ernest Cline<br>
+      <p class = price style="float:left;">$8.79</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9789380914893>
+      <img src =https://books.google.com/books/content/images/frontcover/yec-DAAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Art of War<br>Sun Tzu<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9780857190079>
+      <img src =https://books.google.com/books/content/images/frontcover/0D3y6YG0z6sC?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Communist Manifesto<br>Karl Marx<br>
+      <p class = price style="float:left;">$7.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9786022911845>
+      <img src =https://books.google.com/books/content/images/frontcover/6-pmDwAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Da Vinci Code<br>Dan Brown<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9783736801493>
+      <img src =https://books.google.com/books/content/images/frontcover/WFxoAwAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Holy Bible: King James Version<br>King James Version<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781101642610>
+      <img src =https://books.google.com/books/content/images/frontcover/ha6GIYze5lEC?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Outsiders<br>S.E. Hinton<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9780062457738>
+      <img src =https://books.google.com/books/content/images/frontcover/yng_CwAAQBAJ?fife=w200-h300 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life<br>Mark Manson<br>
+      <p class = price style="float:left;">$7.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781453204696>
+      <img src =https://books.google.com/books/content/images/frontcover/Smz0WDomeqAC?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Theory of Relativity: And Other Essays<br>Albert Einstein<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781504033800>
+      <img src =https://books.google.com/books/content/images/frontcover/4VpsCwAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>The Three Musketeers<br>Alexandre Dumas<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9781773130439>
+      <img src =https://books.google.com/books/content/images/frontcover/KMkDDQAAQBAJ?fife=w400-h600 width ="200" height="300" style="width:100%;max-width:200px"></a><br>Treasure Island<br>Robert Louis Stevenson<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+    <div class="img-container">
+      <a href=http://172.19.50.140/web/?book=9780316007443>
+      <img src =https://books.google.com/books/content/images/frontcover/ZfjzX7M8zt0C?fife=w200-h300 width ="200" height="300" style="width:100%;max-width:200px"></a><br>Twilight<br>Stephenie Meyer<br>
+      <p class = price style="float:left;">$8.99</p>
+    </div>
+</div>
+<script>
+function logout(cname){
+    setCookie(cname,'',0);
+}
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user=getCookie("username");
+    if (user != "") {
+        document.getElementById("Sign-in").innerHTML= "Sign Out";
+        document.getElementById("Sign-in").href="http://172.19.50.140/web/";
+        document.getElementById("acct").innerHTML= user;
+        
+    } 
+}
+
+function loading() {
+    var modal = document.getElementById("loadWin")
+    modal.style.display = "block";
+    var elem = document.getElementById("load");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+            modal.style.display = "none";
+        }
+        else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
+}
+</script>
+
+</body>
+</html>

@@ -31,7 +31,7 @@ def get_items(user):
         query = 'select title,author,price,pic_url,isbn from books where isbn=\'' + i['isbn']+'\''
         dict = db.select(query)[0][0]
         dict['qty'] = i['qty']
-        dict['total'] = double(dict['qty'])*double(dict['price'])
+        dict['total'] = float(dict['qty'])*float(dict['price'])
         info.append(dict) #get the price totals for each book in cart
         j=j+1
     #assigns list of dicts with information of books in the cart
