@@ -1,74 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home</title>
+    <title>Home</title>   
+<link rel="stylesheet" href="static/homeStyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+</head>
+
+<body onload= "loading(); checkCookie();">
+
+<div id = "loadWin" class = "modal">
+    <div class = "modal-content">
+    <div align = "center"> <img src = "https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></div>
+    <br><br>
+    <div id = "bar">
+        <div id = "load"></div>
+    </div>
+    </div>
+</div>
     
-    <style>
-      .filler{
-        padding-top:6%;
-        background:#fff;
-      }
-      body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        background: lightgrey;
-        font-size:0.9em;
-        padding:0px;
-        margin:0px;
-        height:100%;
-      }
-        
-      table {
-        padding-top: 10px;
-        border-collapse: collapse; 
-        margin-left: 150px
-      }
-      td {
-        background: white;
-      }
-      
-      table, td {
-        border: 20px solid lightgrey
-      }
-      .price {
-        text-align: right;
-      }
-  
-
-.img-container {
-    float: left;
-    width: 19%;
-    padding: 5px;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-    </style>
-    <link rel="stylesheet" href="/web/static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
-  </head>
-<body onload="checkCookie()">
-
 <div id="nav">
   <span class="book"><a href="http://172.19.50.140/web/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
   <span class="worm">Worm</span>
+  <span class = "book"><img src = "https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></span>
   <div class="search">
     <form class="rad" action="" method="GET">
-      <input type="radio" name="radiobutton" value="isbn" checked="checked"></input> ISBN 
-      <input type="radio" name="radiobutton" value="title"></input> Title 
-      <input type="radio" name="radiobutton" value="author"></input> Author
-      <input type="radio" name="radiobutton" value="subject"></input> Subject 
+      <input type="radio" name="radiobutton" value="isbn" checked="checked"> ISBN 
+      <input type="radio" name="radiobutton" value="title"> Title 
+      <input type="radio" name="radiobutton" value="author"> Author
+      <input type="radio" name="radiobutton" value="subject"> Subject 
       <input type="text" required class="searchbar"  name="search" placeholder="Search...">
-      </input>
       <button type="submit" class="searchbtn" value="Submit">
       <i class="fa fa-search"></i>
       </button> 
     </form>
   </div>
   <div class="menu">
-    <a href="./static/cartproto.htm">cart (${count})<i class="fa fa-shopping-cart"></i></a>
+    <a href="./static/cartproto.htm">cart <i class="fa fa-shopping-cart"></i></a>
+    <a href="checkoutproto.htm">checkout</a>
     <ul>
       <div class="top">
         <li><a href="profile.html" id="acct">${username}<i class="fa fa-sort-down"></i></a></li> 
@@ -80,7 +48,6 @@
     </ul>
   </div>
 </div>
-
 <div class="filler"></div>
 
   <div class="clearfix">
@@ -103,7 +70,6 @@ function setCookie(cname,cvalue,exdays) {
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -119,7 +85,6 @@ function getCookie(cname) {
     }
     return "";
 }
-
 function checkCookie() {
     account = document.getElementById("acct");
     account = account.innerHTML
@@ -133,9 +98,25 @@ function checkCookie() {
       signInEle.href="http://172.19.50.140/web/";
       console.log(signInEle);
       console.log(3);
-    } 
+      }
 }
-
+function loading() {
+    var modal = document.getElementById("loadWin")
+    modal.style.display = "block";
+    var elem = document.getElementById("load");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+            modal.style.display = "none";
+        }
+        else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
+}
 </script>
 
 </body>

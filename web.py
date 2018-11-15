@@ -6,6 +6,8 @@ import mysql.connector
 import cgi
 import uwsgi
 from cgi import parse_qs, escape
+import os
+
   
 def registrationCheck(mysql_connection,username):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
@@ -26,6 +28,19 @@ def registerUserAdmin(mysql_connection,name,email,address,birthdate,username,pas
       mysql_cursor = mysql_connection.cursor(dictionary = True)
       mysql_cursor.execute("INSERT INTO accounts (name,email,birthdate,username,password,acct_type) values('{}','{}','{}','{}','{}','{}')".format(name,email,birthdate,username,password,acct_type))
       mysql_connection.commit()
+
+def updateUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type):
+    mysql_cursor = mysql_connection.cursor(dictionary = True)
+    mysql_cursor.execute("UPDATE accounts SET name='{}',email='{}',birthdate='{}',password='{}',acct_type='{}' WHERE username='{}'".format(name,email,birthdate,password,acct_type,username))
+    mysql_connection.commit()
+
+def userAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type,acct_action):
+    if(acct_action=="add"):
+      registerUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type)
+    elif(acct_action=="delete"):
+      deleteUser(mysql_connection,username)
+    else:
+      updateUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type)
 
 def registerUser(mysql_connection,name,email,address,birthdate,username,password):
     if(registrationCheck(mysql_connection,username)):
@@ -102,7 +117,7 @@ def application(env, start_response):
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')
         return loginHandler(username,password,mysql_connection)
-      if(len(qs) == 7):
+      if(len(qs) == 8):
         username = qs.get("username".encode(),"")[0].decode('ASCII')
         password = qs.get("password".encode(),"")[0].decode('ASCII')
         email = qs.get("email".encode(),"")[0].decode('ASCII')
@@ -110,7 +125,8 @@ def application(env, start_response):
         address = qs.get("address".encode(),"")[0].decode('ASCII')
         birthdate = qs.get("birthdate".encode(),"")[0].decode('ASCII')
         acct_type =  qs.get("acct_type".encode(),"")[0].decode('ASCII')
-        registerUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type)
+        acct_action =  qs.get("acct_action".encode(),"")[0].decode('ASCII')
+        userAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type,acct_action)
         html_template = Template(filename = 'static/manageUsers.htm')
         html_dict = {
            'accounts': showAccounts(mysql_connection)
