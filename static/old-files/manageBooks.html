@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class = html>
+<head>
+  <title> Books Database </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href = manageBooks.css>
+</head>
+<body>
+
+<div id = nav>
+ <span class="book">BOOK</span>
+ <span class="worm">Worm</span>
+ <span class = "book"><img src ="https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg"></span>
+ <div class = "menu">
+        <ul>
+      <div class="top">
+        <li><a href="profile.html" id="acct">Account <i class="fa fa-sort-down"></i></a></li> 
+        <div class="drop">
+          <li><a href="./adminMainPage.htm">Main Page</a></li>
+          <li><a href="static/Login.htm" id="sign-out" onclick="logout('username')">Sign Out</a></li>
+        </div>
+      </div>
+    </ul>
+ </div>
+</div>
+    
+<h1>Book Database</h1>
+<div class = box align = center>
+  <table class="input-table" id="input-table">
+    <tr>
+      <td class="input-table-form"><b>Title:</b></td>
+      <td><input id="Title" placeholder="Enter Title"></td>
+      <td class="input-table-form"><b>Publisher:</b></td>
+      <td><input id="Publisher" placeholder="Enter Publisher"></td>
+    </tr>
+    <tr>
+      <td class="input-table-form"><b>ISBN #:</b></td>
+      <td><input id="ISBN" placeholder="Enter ISBN #"></td>
+      <td class="input-table-form"><b>Genre:</b></td>
+      <td><input id="Genre" placeholder="Enter Genre"></td>
+    </tr>
+    <tr>
+      <td class="input-table-form"><b>Author:</b></td>
+      <td><input id="Author" placeholder="Enter Author"></td>
+      <td class="input-table-form"><b>Stock:</b></td>
+      <td><input id="Stock" placeholder="Enter Stock"></td>
+    </tr>
+    <tr>
+      <td class="input-table-form"><b>Vendor:</b></td>
+      <td><input id="Vendor" placeholder="Enter Vendor"></td>
+    </tr>
+  </table>
+  <br>
+    <button onclick="addBook()"> Add Book </button>
+    <button onclick="deleteBook()"> Delete Book </button> 
+    <button onclick="updateBook()"> Update Book </button> 
+</div> 
+
+<br>
+<div class="booktable">
+    <table class="book-table" id="book-table">
+      <th>Title</th>
+      <th>ISBN #</th>
+      <th>Author</th>
+      <th>Vendor</th>
+      <th>Publisher</th>
+      <th>Genre</th>
+      <th>Stock</th>
+    </table>
+  </div>
+
+    
+</body>
+</html>
