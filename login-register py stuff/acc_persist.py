@@ -29,6 +29,7 @@ def rmv_user(user):
 #called by admin to delete accounts
 
 def update_user(data): #contains dict of all user attributes?
+    y = 2
     #act not sure how this'll be implemented atm
     #a dict with only the attributes to be changed, then get the keys for the dict in a list and iterate thru tht in the update statement
     #i guess

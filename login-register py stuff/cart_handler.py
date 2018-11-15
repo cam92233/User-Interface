@@ -9,3 +9,5 @@ def handle_cart(case,data):
         for i in books:
             subtotal += i['total']
         return books,subtotal
+    if case == 'quantity':
+        cp.updateItem(data['user'],data['isbn'],data['qty'])

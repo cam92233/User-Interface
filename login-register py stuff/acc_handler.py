@@ -7,7 +7,7 @@ def handle_acc(case,data):
         query = ap.register(acc)
         return query
     elif case == 'login':
-        if ap.login(data)[1] == 1:
+        if ap.login(data) == 1:
             return True
         else:
             return False
