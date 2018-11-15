@@ -39,7 +39,7 @@
     <a href="checkoutproto.htm">checkout</a>
     <ul>
       <div class="top">
-        <li><a href="static/index.html" id="acct">${username}<i class="fa fa-sort-down"></i></a></li> 
+        <li><a href="static/index.html" id="acct">${username}</a><i class="fa fa-sort-down"></i></li> 
         <div class="drop">
           <li><a href="profile.htm" id="settings" >settings</a></li>
           <li><a href="static/Login.htm" id="Sign-in" onclick="logout('username')">Sign In</a></li>
@@ -89,13 +89,14 @@ function checkCookie() {
     account = document.getElementById("acct");
     account = account.innerHTML
     console.log(account)
-    var compare = 'Account<i class="fa fa-sort-down"></i>';
+    var compare = 'Account';
     if(account != compare){
-      setCookie("username",account,30)
       var signInEle = document.getElementById("Sign-in");
       signInEle.innerHTML = "Sign Out";
       signInEle.href="http://172.19.50.140/web/";
       settings = document.getElementById("settings");
+      var queryString = "?user=" + account;
+      settings.href = queryString;
       
       }
 }

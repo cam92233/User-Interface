@@ -22,13 +22,13 @@ def getBookInfo(title,mysql_connection):
     mysql_cursor.execute("SELECT * FROM books WHERE isbn='{}'".format(title))
     bookInfo = mysql_cursor.fetchall()
     return bookInfo
-  
-def getUserInfo(username, mysql_connection):
+    
+def profileInfo(mysql_connection,user):
     mysql_cursor = mysql_connection.cursor(dictionary = True)
-    mysql_cursor.execute("SELECT * FROM accounts WHERE username='{}'".format(username))
-    account = mysql_cursor.fetchall()
-    return account
-
+    mysql_cursor.execute("SELECT * FROM accounts WHERE username='{}'".format(user))
+    userInfo = mysql_cursor.fetchall()
+    return userInfo
+    
 def registerUserAdmin(mysql_connection,name,email,address,birthdate,username,password,acct_type):
     if(registrationCheck(mysql_connection,username)):
       mysql_cursor = mysql_connection.cursor(dictionary = True)
@@ -74,6 +74,16 @@ def application(env, start_response):
       # if(len(qs) == 1)
       # page = qs.get("page","")
       action = qs.get("update",0)
+      user = qs.get("user",0)
+      if(user != 0):
+        user = user[0]
+        html_template = Template(filename = 'templates/profile.htm')
+        html_dict = {
+         'userInfo': profileInfo(mysql_connection, user)
+        } # html_dict
+        response = html_template.render(**html_dict)
+        mysql_connection.close()
+        return response.encode()
       if(action !=0):
         action = action[0]
         action = int(action)
@@ -87,18 +97,6 @@ def application(env, start_response):
         response = html_template.render(**html_dict)
         mysql_connection.close()
         return response.encode()
-      if(action == 2): #action 2 has not been made yet
-        username = qs.get("username","")
-        if(str(detailedBook) != ""):
-         username = cgi.escape(str(username[0]))
-        if len(username) > 0:
-            html_template = Template(filename = 'templates/profile.htm')
-            html_dict = {
-               'userInfo': getUserInfo(username,mysql_connection)
-            }
-            response = html_template.render(**html_dict)
-            mysql_connection.close()
-            return response.encode()
       else:
         searchText = qs.get("search","")
         if len(searchText) > 0:
