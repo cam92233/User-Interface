@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+<!--<link rel="stylesheet" href="http://jsmalls128.pythonanywhere.com/static/detailStyle.css">-->
+<link rel="stylesheet" href="localhost/check.css"/>
+<title>Ready Player One</title>
+<style>
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    background-color: #eeeeee; font-size:0.9em;
+    padding:0px;
+    margin:0px;
+    height:100%;
+}
+
+    
+.leftcolumn {   
+    position: relative;
+    padding-left: 25%;
+    padding-right: 50%;
+}
+.card {
+padding: 30px;
+padding-bottom: 110px;
+width:650px;
+position: relative;
+background-color: white;
+margin-top: 130px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}   
+.card img{
+display: block;
+width: 220px;
+height: 333px;
+}
+    
+h1 {
+    color: #353837;   
+	text-align:right;
+	font-weight:100;
+	letter-spacing:1px;
+	line-height:normal;
+	font-size:2.5em;
+	padding-right:10px;
+	border-bottom:1px #bfbfbf solid;
+}
+
+hr {
+	border:1px #bfbfbf solid;
+	border-top:none;
+}
+    
+.book {
+display:inline-block;
+vertical-align:middle;
+font-size:2em;
+font-weight:bold;
+}
+
+.wormImg {
+width: 40px;
+padding-left: 5px;
+}
+    
+.worm {
+display:inline-block;
+vertical-align:middle;
+font-family:georgia;
+font-style:italic;
+font-size:2em;
+padding:3px;
+background:#fff;
+top:0px;
+}
+
+#nav {
+position:fixed;
+top:0px;
+left:0px;
+padding:20px;
+width:100%;
+height:6%;
+z-index:1;
+background:#A7D5DC;
+overflow:none;
+font-size:0.9em;
+font-family:helvetica;
+}
+
+#nav ul {
+list-style-type:none;
+display:inline;
+padding:0px;
+}
+
+#nav li {
+background:black;
+}
+
+button, #nav a {
+	color:#fff;
+	text-decoration:none;
+	font-weight:bold;
+	letter-spacing:1px;
+	font-variant:small-caps;
+	background:black;
+	border:none;
+	padding:10px 15px 10px 15px;
+}
+
+input[type=submit] {
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    letter-spacing:1px;
+    font-variant:small-caps;
+    background:black;
+    border:none;
+    cursor:pointer;
+}
+
+button:hover {
+	background:#999;
+}
+
+#nav a:hover { 
+	background:#fff;
+	color:#999;
+}
+
+.top{
+	display:inline-block;
+}
+
+.top li {
+	display:inline-block;
+	text-align:center;
+}
+
+.top a {
+	display:inline-block;
+	width:90px;
+}
+
+.drop {
+	display:none;
+	position:absolute;
+
+}
+
+.drop li {
+	display:block;
+}
+
+.top:hover .drop {
+	display:block;
+}
+
+.search {
+	display:inline;
+	float:left;
+	margin-top:0.2%;
+	width:50%;
+}
+
+.rad {
+	display:inline;
+	background:#000;
+	color:#FFF;
+	font-size:1em;
+	font-weight:bold;
+	padding:8px 5px 8px 5px;
+}
+.searchbtn {
+	padding:8px;
+	border:none;
+	background: #000;
+	margin:0px;
+}
+.searchbtn:hover {
+	cursor: pointer;
+}
+.fa-search {
+	color:white;
+}
+.searchbar {
+	width:40%;
+	padding: 6px;
+	font-weight:bold;
+	font-size:13px;
+}
+
+.menu {
+	float:right;
+	margin-right:3%;
+}
+
+.filler {
+	padding-top:6%;
+	background:#fff;
+}
+
+.items {
+	border: solid #fff 20px;
+	background:#fff;
+	border-spacing:1px;
+	border-radius:10px;
+	text-align:center;
+}
+
+.items th {
+	font-size:1.3em;
+	text-transform:uppercase;
+	padding:7px;
+	letter-spacing:1px;
+    font-family: monospace;
+	font-weight:100;
+}
+
+.items td {
+	padding:7px;
+}
+
+.items button {
+	padding: 3px;
+}
+
+.items tr:nth-child(even) {
+	background:#efefef;
+}
+
+.items th:nth-child(2) {
+	width:50%;
+}
+
+.imgr {
+	width:20%;
+}
+
+.tbimg {
+	width:auto;
+	max-height:70%;
+}
+
+.ship {
+	text-align:right;
+}
+
+.ship table {
+	display:inline;
+}
+.ship th, .ship td{
+	padding:3px;
+}
+
+.ship select {
+	padding:3px;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="nav">
+         <span class="book"><a href="/" style="padding:0px 0px 0px 0px; color:black; background:none;">BOOK</a></span>
+        <span class="worm">Worm</span>
+        <span class = "book"><img src ="https://images.emojiterra.com/mozilla/512px/1f41b.png" class = "wormImg" ></span>
+    
+		<div class="search">
+			<form class="rad" action="/search" method="post">
+	    		<input type="radio" name="cat" value="isbn" checked="checked"> ISBN
+				<input type="radio" name="cat" value="title"> Title
+				<input type="radio" name="cat" value="author"> Author
+				<input type="radio" name="cat" value="subject"> Subject
+
+                <input type="text" class="searchbar"  name="search" placeholder="Search...">
+                <button type="submit" class="searchbtn"><i class="fa fa-search"></i></button> 
+            </form>
+		</div>
+		<div class="menu">
+			<a href="/cart">cart (2) <i class="fa fa-shopping-cart"></i></a>
+			<a href="/checkout">checkout</a>
+		    <ul>
+			<div class="top">
+				<li><a href="/profile">autumn <i class="fa fa-sort-down"></i></a></li>
+            <div class="drop">
+					<li><a href="/profile">settings</a></li>
+					<li><a href="/signout" id="Sign-in">Logout</a></li>
+            </div>
+			</div>
+		    </ul>
+		</div>
+	</div>
+
+<div class = leftcolumn>
+  <div class = "card"  >
+    <h1>Ready Player One</h1>
+    <b>Ernest Cline</b><br><br>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Ready_Player_One_cover.jpg/220px-Ready_Player_One_cover.jpg" style="float:left;padding:0 20px 0 0;width:auto;max-height:20%;"/>
+    <b>ISBN:</b> 9780307887443 | <b>Left in stock:</b> 12 | <b>Subject:</b> Sci-Fi<hr/><br/>
+    In the year 2045, reality is an ugly place. The only time teenage Wade Watts really feels alive is when he&#39;s jacked into the virtual utopia known as the OASIS. Wade&#39;s devoted his life to studying the puzzles hidden within this world&#39;s digital confines—puzzles that are based on their creator&#39;s obsession with the pop culture of decades past and that promise massive power and fortune to whoever can unlock them. )
+But when Wade stumbles upon the first clue, he finds himself beset by players willing to kill to take this ultimate prize. The race is on, and if Wade&#39;s going to survive, he&#39;ll have to win—and confront the real world he&#39;s always been so desperate to escape.
+    <br><br><br>
+    <form class="rad" action="" method="POST">
+	    <input type="radio" name="isbn" checked="checked" style="display:none" value="9780307887443">
+	    <input type="submit" value="Add to cart">
+    </form> 
+  </div>
+</div>  
+<script>
+  function checkCookie() {
+    account = document.getElementById("Sign-in");
+    account = account.innerHTML
+    console.log(account)
+    var compare = 'Logout';
+    if(account == compare){
+      var signInEle = document.getElementById("Sign-in");
+     signInEle.href="http://jsmalls128.pythonanywhere.com/signout";
+      }
+}
+  </script>
+ </body>
+</html>
